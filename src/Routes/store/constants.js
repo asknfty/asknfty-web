@@ -1,0 +1,1 @@
+export const CHECK_NETWORK = '@APP/CHECK_NETWORK'
