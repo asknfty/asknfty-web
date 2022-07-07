@@ -4,9 +4,10 @@ import { FilterBlock, Sort } from './components'
 import { TextNormal, Container, CheckboxGroup, FormInput } from 'Components'
 import { SEARCH_ICON, WELCOME } from 'Assets'
 import { useGetNftAllCollection } from 'Hooks'
-import { CheckBoxWrapper, Wrapper } from './styled'
+import { CheckBoxWrapper, ListWrapper, Wrapper } from './styled'
 import { FormProvider, useForm } from 'react-hook-form'
 import { parseParamsToQueryString } from 'Utils'
+import ListNFT from './components/list'
 
 const NFT_OPTIONS = [
   { label: 'NFT Collection', value: 'NFT Collection' },
@@ -51,6 +52,9 @@ const HomeScreen = () => {
             <FilterBlock />
           </div>
         </Container>
+        <ListWrapper>
+          <ListNFT />
+        </ListWrapper>
         {/* <Container>
           <div className="search-block">
             <img src={WELCOME} alt="welcome" />
@@ -62,7 +66,7 @@ const HomeScreen = () => {
             <FilterBlock />
           </div>
         </Container> */}
-      </Wrapper>
+      </Wrapper >
     )
   }
 

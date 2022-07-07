@@ -15,6 +15,7 @@ import Dropdown from './dropdown'
 import Checkbox from './checkbox'
 import CheckboxGroup from './checkbox_group'
 import { ButtonImage } from './button'
+import SkeletonCardSearch from './skeleton'
 export * from './form'
 
 export {
@@ -47,5 +48,8 @@ export {
     CheckboxGroup,
 
     // Button
-    ButtonImage
+    ButtonImage,
+
+    //skeleton
+    SkeletonCardSearch
 }

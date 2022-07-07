@@ -40,3 +40,15 @@ export const CheckBoxWrapper = styled.div`
   text-align: left;
   margin: 25px auto 0 auto;
 `
+
+export const ListWrapper = styled.div`
+  max-width: 1096px;
+  margin: 0 auto;
+  padding-left: 16px;
+  padding-right: 16px;
+  margin-top: 72px;
+  margin-bottom: 22px;
+  .btn-image {
+    margin-top: 40px;
+  }
+`

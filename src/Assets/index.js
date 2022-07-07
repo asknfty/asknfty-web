@@ -46,6 +46,7 @@ import BG_WELCOME_MOBILE from './images/bg-welcome-mobile.png'
 import BG_BUTTON_APPLY_UN_ACTIVE from './images/bg-btn-apply-unActive.png'
 import BG_BUTTON_APPLY_ACTIVE from './images/bg-btn-apply-active.png'
 import BG_BUTTON_RESET from './images/bg-button-reset.png'
+import BUTTON_IMAGE from './images/button-image.png'
 
 // ICON
 
@@ -103,5 +104,6 @@ export {
     BG_BUTTON_APPLY_UN_ACTIVE,
     BG_BUTTON_RESET,
     ICON_ARROW_DOWN,
-    ICON_ARROW_UP_LONG
+    ICON_ARROW_UP_LONG,
+    BUTTON_IMAGE
 }
