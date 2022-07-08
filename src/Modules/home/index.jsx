@@ -30,7 +30,7 @@ const HomeScreen = () => {
   const { isLoading, data, error, getNftAllCollectionAction } = useGetNftAllCollection()
 
   useEffect(() => {
-    getNftAllCollectionAction({ page: 1, limit: 100 })
+    // getNftAllCollectionAction({ page: 1, limit: 100 })
   }, [])
 
   const onChange = (checkedValues) => {
