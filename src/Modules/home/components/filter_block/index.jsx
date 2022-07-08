@@ -40,12 +40,7 @@ const FilterBlock = () => {
           placeholder="Search by keyword..."
           suffix={<img onClick={handleSubmit(onSubmit)} src={SEARCH_ICON} alt="icon-search" />}
         />
-        {/* <Filter filters={filters} setValue={setValue} />
-        <Sort sorts={sorts} setValue={setValue} /> */}
       </form>
-      {/* <CheckBoxWrapper>
-        <CheckboxGroup options={NFT_OPTIONS} onChange={onSelectNFT} />
-      </CheckBoxWrapper> */}
     </FormProvider>
   )
 }
