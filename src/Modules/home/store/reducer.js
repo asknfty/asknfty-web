@@ -1,5 +1,5 @@
 import { createReducer, updateObject, REQUEST, SUCCESS, FAILURE } from 'Stores'
-import { GET_DETAILS_NFT_COLLECTION, GET_DETAILS_NFT_ITEM, GET_NFT_ALL_COLLECTION, GET_NFT_ALL_ITEM } from './constants'
+import { DELETE__NFT_ALL_COLLECTION, GET_DETAILS_NFT_COLLECTION, GET_DETAILS_NFT_ITEM, GET_NFT_ALL_COLLECTION, GET_NFT_ALL_ITEM } from './constants'
 
 const nftAllCollection = {
     isLoading: false,
@@ -58,7 +58,7 @@ function loadNftAllCollection(state) {
 function loadNftAllCollectionSuccess(state, { payload }) {
     const { data, pagination, filter } = payload
     return updateObject(state, {
-        nftAll: {
+        nftAllCollection: {
             ...state.nftAllCollection,
             isLoading: false,
             data,
@@ -162,6 +162,16 @@ function loadDetailsNftCollectionFailure(state, { error }) {
     })
 }
 
+function deleteNftAllCollection(state) {
+    return updateObject(state, {
+        nftAllCollection: {
+            ...state.nftAllCollection,
+            isLoading: false,
+            data: []
+        }
+    })
+}
+
 export default createReducer(initialState, {
     [REQUEST(GET_NFT_ALL_COLLECTION)]: loadNftAllCollection,
     [SUCCESS(GET_NFT_ALL_COLLECTION)]: loadNftAllCollectionSuccess,
@@ -178,4 +188,6 @@ export default createReducer(initialState, {
     [REQUEST(GET_DETAILS_NFT_ITEM)]: loadDetailsNftItem,
     [SUCCESS(GET_DETAILS_NFT_ITEM)]: loadDetailsNftItemSuccess,
     [FAILURE(GET_DETAILS_NFT_ITEM)]: loadDetailsNftItemFailure,
+
+    [REQUEST(DELETE__NFT_ALL_COLLECTION)]: deleteNftAllCollection,
 })

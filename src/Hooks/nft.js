@@ -4,17 +4,18 @@ import saga from 'Modules/home/store/saga'
 import reducer from 'Modules/home/store/reducer'
 import { useInjectReducer, useInjectSaga } from "Stores"
 import { makeNftCollection, makeNftCollectionDetail, makeNftItem, makeNftItemDetail } from "Modules/home/store/selectors"
-import { getNftAllCollection, getNftAllItem, getDetailNftItem, getDetailNftCollection } from "Modules/home/store/actions"
+import { getNftAllCollection, getNftAllItem, getDetailNftItem, getDetailNftCollection, deleteNftAllCollection } from "Modules/home/store/actions"
 
 export const useGetNftAllCollection = () => {
-    useInjectSaga({ key: 'nftAllCollection', saga })
-    useInjectReducer({ key: 'nftAllCollection', reducer })
+    useInjectSaga({ key: 'nft', saga })
+    useInjectReducer({ key: 'nft', reducer })
 
     const dispatch = useDispatch()
 
     const { data, isLoading, filter, pagination } = useSelector(makeNftCollection())
 
     const getNftAllCollectionAction = (payload) => dispatch(getNftAllCollection(payload))
+    const deleteNftAllCollectionAction = (payload) => dispatch(deleteNftAllCollection(payload))
 
     return {
         isLoading,
@@ -22,12 +23,13 @@ export const useGetNftAllCollection = () => {
         filter,
         pagination,
         getNftAllCollectionAction,
+        deleteNftAllCollectionAction
     }
 }
 
 export const useGetNftAllItem = () => {
-    useInjectSaga({ key: 'nftAllItem', saga })
-    useInjectReducer({ key: 'nftAllItem', reducer })
+    useInjectSaga({ key: 'nft', saga })
+    useInjectReducer({ key: 'nft', reducer })
 
     const dispatch = useDispatch()
 
@@ -45,8 +47,8 @@ export const useGetNftAllItem = () => {
 }
 
 export const useGetDetailNftCollection = () => {
-    useInjectSaga({ key: 'nftCollectionDetail', saga })
-    useInjectReducer({ key: 'nftCollectionDetail', reducer })
+    useInjectSaga({ key: 'nft', saga })
+    useInjectReducer({ key: 'nft', reducer })
 
     const dispatch = useDispatch()
 
@@ -63,8 +65,8 @@ export const useGetDetailNftCollection = () => {
 }
 
 export const useGetDetailNftItem = () => {
-    useInjectSaga({ key: 'nftItemDetail', saga })
-    useInjectReducer({ key: 'nftItemDetail', reducer })
+    useInjectSaga({ key: 'nft', saga })
+    useInjectReducer({ key: 'nft', reducer })
 
     const dispatch = useDispatch()
 

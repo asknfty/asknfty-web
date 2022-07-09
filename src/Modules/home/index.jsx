@@ -1,38 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import HomeLayout from '../layouts/home'
-import { FilterBlock, Sort } from './components'
-import { TextNormal, Container, CheckboxGroup, FormInput } from 'Components'
-import { SEARCH_ICON, WELCOME } from 'Assets'
+import { FilterBlock } from './components'
+import { TextNormal, Container } from 'Components'
+import { CLOUD, COIN, RIGHT_HAND, WELCOME } from 'Assets'
 import { useGetNftAllCollection } from 'Hooks'
-import { CheckBoxWrapper, ListWrapper, Wrapper } from './styled'
-import { FormProvider, useForm } from 'react-hook-form'
-import { parseParamsToQueryString } from 'Utils'
+import { ListWrapper, Wrapper } from './styled'
 import ListNFT from './components/list'
-
-const NFT_OPTIONS = [
-  { label: 'NFT Collection', value: 'NFT Collection' },
-  { label: 'NFT Item', value: 'NFT Item' }
-]
-
-const DEFAULT_VALUE = {
-  queries: '',
-  sorts: []
-}
 
 const HomeScreen = () => {
   const [isAvailable, setIsAvailable] = useState(false)
-
-  const form = useForm({
-    defaultValues: DEFAULT_VALUE
-  })
-
-  const { setValue, handleSubmit, control } = form
-
-  const { isLoading, data, error, getNftAllCollectionAction } = useGetNftAllCollection()
-
-  useEffect(() => {
-    // getNftAllCollectionAction({ page: 1, limit: 100 })
-  }, [])
 
   const onChange = (checkedValues) => {
     console.log('Boy 🚀 ~ file: index.jsx ~ line 24 ~ onChange ~ checkedValues', checkedValues)
@@ -51,21 +27,19 @@ const HomeScreen = () => {
             </div>
             <FilterBlock />
           </div>
+          <ListWrapper>
+            <ListNFT />
+          </ListWrapper>
         </Container>
-        <ListWrapper>
-          <ListNFT />
-        </ListWrapper>
-        {/* <Container>
-          <div className="search-block">
-            <img src={WELCOME} alt="welcome" />
-            <div className="label">
-              <TextNormal fontSize="size_32" fontWeight="fw_700">
-                Find a NFT Collection
-              </TextNormal>
-            </div>
-            <FilterBlock />
-          </div>
-        </Container> */}
+        <div className="cloud-img">
+          <img src={CLOUD} alt="cloud" />
+        </div>
+        <div className="coin-img">
+          <img src={COIN} alt="coin" />
+        </div>
+        <div className="hand">
+          <img src={RIGHT_HAND} alt="right-hand" />
+        </div>
       </Wrapper >
     )
   }

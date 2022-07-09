@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import { MEDIA_WIDTHS } from "Themes"
 
 export const Wrapper = styled.div`
     max-width: 256px;
@@ -34,6 +35,27 @@ export const Wrapper = styled.div`
                     content: '';
                     display: block;
                     padding-top: 100%;
+                }
+            }
+            .card-title {
+                p {
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    display: -webkit-box;
+                    -webkit-line-clamp: 2; /* number of lines to show */
+                    line-clamp: 2; 
+                    -webkit-box-orient: vertical;
+                }
+            }
+        }
+    }
+    @media screen and (max-width: ${MEDIA_WIDTHS.upToMedium}px) {
+        max-width: 156px;
+        margin: 0 auto;
+        .wrap-content {
+            .card {
+                .card-img {
+                    max-width: 156px;
                 }
             }
         }
