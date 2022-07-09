@@ -46,6 +46,12 @@ import BG_WELCOME_MOBILE from './images/bg-welcome-mobile.png'
 import BG_BUTTON_APPLY_UN_ACTIVE from './images/bg-btn-apply-unActive.png'
 import BG_BUTTON_APPLY_ACTIVE from './images/bg-btn-apply-active.png'
 import BG_BUTTON_RESET from './images/bg-button-reset.png'
+import BUTTON_IMAGE from './images/button-image.png'
+import BTN_SEARCH_RED from './images/btn-search-red.png'
+import CLOUD from './images/cloud.png'
+import RIGHT_HAND from './images/right-hand.png'
+import COIN from './images/coin.png'
+import BTN_X from './images/btn-x.png'
 
 // ICON
 
@@ -103,5 +109,11 @@ export {
     BG_BUTTON_APPLY_UN_ACTIVE,
     BG_BUTTON_RESET,
     ICON_ARROW_DOWN,
-    ICON_ARROW_UP_LONG
+    ICON_ARROW_UP_LONG,
+    BUTTON_IMAGE,
+    BTN_SEARCH_RED,
+    RIGHT_HAND,
+    COIN,
+    CLOUD,
+    BTN_X
 }

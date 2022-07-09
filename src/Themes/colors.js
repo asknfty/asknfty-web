@@ -39,6 +39,8 @@ export const Colors = {
     text_tab_color: '#D3D3D3',
     text_danger: '#F33A27',
     text_active_green: '#00C271',
+    text_grey: '#4E4B4B',
+    title_grey: '#837D7D',
 
     // btn color
     primary_btn: '#00C271',

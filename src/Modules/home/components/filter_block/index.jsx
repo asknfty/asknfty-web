@@ -1,36 +1,46 @@
-import { SEARCH_ICON } from 'Assets'
+import { BTN_SEARCH_RED, BTN_X, BUTTON_IMAGE } from 'Assets'
 import { CheckboxGroup, FormInput } from 'Components'
 import { NFT_OPTIONS } from 'Constants'
-import React, { useState } from 'react'
+import React, { useState, useCallback, memo } from 'react'
 import { FormProvider, useForm } from 'react-hook-form'
-import { parseParamsToQueryString } from 'Utils'
+import { SearchOutlined } from '@ant-design/icons'
+import { parseParamsCollectionToQueryString } from 'Utils'
 import { FilterBlockSchema } from './schema'
 import { CheckBoxWrapper } from './styled'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { Filter, Sort } from './components'
+import { useGetNftAllCollection } from 'Hooks'
 
 const DEFAULT_VALUE = {
   queries: '',
-  filters: [],
-  sorts: []
 }
 
 const FilterBlock = () => {
+  const { getNftAllCollectionAction, deleteNftAllCollectionAction } = useGetNftAllCollection()
   const form = useForm({
-    defaultValues: DEFAULT_VALUE,
     resolver: yupResolver(FilterBlockSchema())
   })
-  const { handleSubmit, setValue, watch } = form
-  const [sorts, filters] = watch(['sorts', 'filters'])
 
-  const onSubmit = (formData) => {
-    console.log('Boy ~ file: index.jsx ~ line 47 ~ onSubmit ~ formData', formData)
-    // const URL = parseParamsToQueryString(formData)
-  }
+  const { handleSubmit, reset, watch } = form
 
-  const onSelectNFT = (checkedValues) => {
-    console.log('Boy 🚀 ~ file: index.jsx ~ line 24 ~ onChange ~ checkedValues', checkedValues)
-  }
+  const {
+    queries
+  } = watch()
+  console.log('queries', queries)
+
+  const handleReset = useCallback((formData) => {
+    reset({
+      queries: null
+    })
+    deleteNftAllCollectionAction()
+  }, [])
+
+  const onSubmit = useCallback((formData) => {
+    console.log('123')
+    getNftAllCollectionAction({ params: { page: 0, limit: 10, queries: formData.queries } })
+  }, [])
+
+  console.log('rerender')
 
   return (
     <FormProvider {...form}>
@@ -38,16 +48,16 @@ const FilterBlock = () => {
         <FormInput
           name="queries"
           placeholder="Search by keyword..."
-          suffix={<img onClick={handleSubmit(onSubmit)} src={SEARCH_ICON} alt="icon-search" />}
+          suffix={
+            <>
+              {queries && queries.length > 0 && <img onClick={handleReset} src={BTN_X} alt="icon-search" />}
+              <img onClick={handleSubmit(onSubmit)} src={BTN_SEARCH_RED} alt="icon-search" />
+            </>
+          }
         />
-        {/* <Filter filters={filters} setValue={setValue} />
-        <Sort sorts={sorts} setValue={setValue} /> */}
       </form>
-      {/* <CheckBoxWrapper>
-        <CheckboxGroup options={NFT_OPTIONS} onChange={onSelectNFT} />
-      </CheckBoxWrapper> */}
     </FormProvider>
   )
 }
 
-export default FilterBlock
+export default memo(FilterBlock)

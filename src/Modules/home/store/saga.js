@@ -11,13 +11,12 @@ export function* getNftAllCollectionSaga({ payload }) {
     try {
         const { code, data } = yield getNftAllCollectionAPI(payload)
         const { result: nftAllCollection, ...pagination } = data
-        if (code === 200) {
+        if (code === 'MAR0000') {
             yield put({
                 type: SUCCESS(GET_NFT_ALL_COLLECTION),
                 payload: {
                     data,
-                    pagination,
-                    filter: payload?.params?.filter
+                    pagination
                 }
             })
         }

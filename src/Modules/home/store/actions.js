@@ -1,5 +1,5 @@
 import { REQUEST } from 'Stores'
-import { GET_DETAILS_NFT_ITEM, GET_NFT_ALL_COLLECTION, GET_NFT_ALL_ITEM } from './constants'
+import { DELETE__NFT_ALL_COLLECTION, GET_DETAILS_NFT_ITEM, GET_NFT_ALL_COLLECTION, GET_NFT_ALL_ITEM } from './constants'
 
 export const getNftAllCollection = (payload) => ({
     type: REQUEST(GET_NFT_ALL_COLLECTION),
@@ -19,4 +19,8 @@ export const getDetailNftCollection = (payload) => ({
 export const getDetailNftItem = (payload) => ({
     type: REQUEST(GET_DETAILS_NFT_ITEM),
     payload
+})
+
+export const deleteNftAllCollection = () => ({
+    type: REQUEST(DELETE__NFT_ALL_COLLECTION)
 })
