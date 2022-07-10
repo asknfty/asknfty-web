@@ -21,8 +21,6 @@ export const Wrapper = styled.div`
         .card {
             padding: 16px;
             .card-img {
-                /* background-image: url('https://static-nft.pancakeswap.com/mainnet/0xDf7952B35f24aCF7fC0487D01c8d5690a60DBa07/sparkle-1000.png'); */
-                /* background-image: url('https://img.seadn.io/files/1b7241651acf9119214584f794d25655.png?fit=max&w=600'); */
                 background-repeat: no-repeat;
                 background-size: contain;
                 height: max-content;
@@ -37,7 +35,19 @@ export const Wrapper = styled.div`
                     padding-top: 100%;
                 }
             }
+            .card-name {
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    display: -webkit-box;
+                    -webkit-line-clamp: 1; /* number of lines to show */
+                    line-clamp: 1; 
+                    -webkit-box-orient: vertical;
+            }
             .card-title {
+                height: 50px;
+                @media screen and (max-width: ${MEDIA_WIDTHS.upToSmall}px) {
+                    height: 48px;
+                }
                 p {
                     overflow: hidden;
                     text-overflow: ellipsis;
@@ -45,6 +55,12 @@ export const Wrapper = styled.div`
                     -webkit-line-clamp: 2; /* number of lines to show */
                     line-clamp: 2; 
                     -webkit-box-orient: vertical;
+                }
+            }
+            .card-img-default {
+                height: 224px;
+                @media screen and (max-width: ${MEDIA_WIDTHS.upToMedium}px){
+                    height: 113px;
                 }
             }
         }
