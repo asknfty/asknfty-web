@@ -1,4 +1,4 @@
-import { Button, List, Skeleton } from 'antd'
+import { Button, List, Row, Skeleton } from 'antd'
 import { BUTTON_IMAGE } from 'Assets';
 import { ButtonImage } from 'Components';
 import CardSearch from 'Components/cardSearch';
@@ -7,74 +7,76 @@ import { getNftAllCollection } from 'Modules/home/store/actions';
 import React, { useState, useEffect } from 'react'
 
 const COUNT_ITEM_LOAD_MORE = 10
-const fakeDataUrl = `https://randomuser.me/api/?results=${COUNT_ITEM_LOAD_MORE}&inc=name,gender,email,nat,picture&noinfo`;
 
 const ListNFT = () => {
     const [initLoading, setInitLoading] = useState(true)
     const [loading, setLoading] = useState(false)
-    const [nftCollection, setNftCollectionName] = useState()
+    const [nftCollectionName, setNftCollectionName] = useState([])
     const [list, setList] = useState([])
 
-    const { data, getNftAllCollectionAction } = useGetNftAllCollection()
+    const { data, getNftAllCollectionAction, pagination, isLoading } = useGetNftAllCollection()
+
+    const { page, pageSize, total } = pagination
 
     useEffect(() => {
-        setNftCollectionName(data)
         setList(data?.records)
+        setNftCollectionName(data?.records)
     }, [data])
 
-    // const onLoadMore = () => {
-    //     setLoading(true)
-    //     setList(
-    //         nftCollection.concat(
-    //             [...new Array(COUNT_ITEM_LOAD_MORE)].map(() => ({
-    //                 loading: true,
-    //                 name: {},
-    //                 picture: {}
-    //             }))
-    //         )
-    //     )
+    const onLoadMore = async () => {
+        setList(
+            nftCollectionName.concat(
+                [...new Array(COUNT_ITEM_LOAD_MORE)].map(() => ({
+                    loading: true
+                }))
+            )
+        )
+        getNftAllCollectionAction({ params: { page: page + 1, pageSize: COUNT_ITEM_LOAD_MORE, queries: 'nam' } })
+        const newData = nftCollectionName.concat(data?.records)
+        setNftCollectionName(newData)
+        setList(newData)
+        window.dispatchEvent(new Event('resize'))
+    }
 
-    //     getNftAllCollection({params: {}})
-
-    //     fetch(fakeDataUrl)
-    //         .then((res) => res.json())
-    //         .then((res) => {
-    //             const newData = data.concat(res.results)
-    //             setData(newData)
-    //             setList(newData)
-    //             setLoading(false)
-    //             window.dispatchEvent(new Event('resize'))
-    //         })
-
-    // }
-
-    // const loadMore =
-    //     !initLoading && !loading ? (
-    //         <ButtonImage className="btn-image" imageButton={BUTTON_IMAGE} onClick={onLoadMore} text="Load More" color="quote_text" fontWeight="fw_700" />
-    //     ) : null;
+    const loadMore =
+        (data?.records && total -  > 0) ? (
+            <ButtonImage className="btn-image" imageButton={BUTTON_IMAGE} onClick={onLoadMore} text="Load More" color="quote_text" fontWeight="fw_700" />
+        ) : null;
     return (
-        <List
-            className="loadmore-list"
-            // loading={initLoading}
-            itemLayout="horizontal"
-            // loadMore={loadMore}
-            dataSource={list}
-            grid={{
-                gutter: [24, 40],
-                xs: 2,
-                sm: 3,
-                md: 4,
-                lg: 4,
-                xl: 4,
-                xxl: 4
-            }}
-            renderItem={(item) => (
-                <CardSearch url={item?.logo_url} name={item?.collection_name} title={item?.description} />
+        <>
+            <Row gutter={[24, 40]}>
+                {
+                    list && list.map((item, index) => (
+                        <Skeleton key={index} active avatar title={false} loading={loading}>
+                            <CardSearch url={item?.logo_url} name={item?.collection_name} title={item?.description} />
+                        </Skeleton>
+                    ))
+                }
+            </Row>
+            {loadMore}
+        </>
 
-                // <Skeleton active avatar title={false} loading={item.loading}>
-                // </Skeleton>
-            )}
-        />
+
+        // <List
+        //     className="loadmore-list"
+        //     itemLayout="horizontal"
+        //     loadMore={loadMore}
+        //     dataSource={list}
+        //     grid={{
+        //         gutter: [24, 40],
+        //         xs: 2,
+        //         sm: 3,
+        //         md: 4,
+        //         lg: 4,
+        //         xl: 4,
+        //         xxl: 4
+        //     }}
+        //     renderItem={(item) => (
+        //         <Skeleton active avatar title={false} loading={isLoading}>
+        //             <CardSearch url={item?.logo_url} name={item?.collection_name} title={item?.description} />
+        //         </Skeleton>
+        //     )}
+        // />
     )
 }
 
