@@ -1,25 +1,54 @@
-import { Button, List, Row, Skeleton } from 'antd'
-import { getNftAllCollectionAPI } from 'Apis';
-import { BUTTON_IMAGE } from 'Assets';
-import axios from 'axios';
-import { ButtonImage } from 'Components';
-import CardSearch from 'Components/cardSearch';
-import { useGetNftAllCollection } from 'Hooks';
-import { getNftAllCollection } from 'Modules/home/store/actions';
+import { Button, Col, List, Row, Skeleton } from 'antd'
+import { getNftAllCollectionAPI } from 'Apis'
+import { BUTTON_IMAGE } from 'Assets'
+import { ButtonImage } from 'Components'
+import CardSearch from 'Components/cardSearch'
+import { useGetNftAllCollection } from 'Hooks'
 import React, { useState, useEffect } from 'react'
+import styled from 'styled-components'
+import { MEDIA_WIDTHS } from 'Themes'
+
+const Wrapper = styled.div`
+    .ske {
+        background: white;
+        display: flex;
+        flex-direction: column;
+        border-radius: 4px;
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+    .ant-skeleton-header {
+        padding-right: unset;
+    }
+    .ant-skeleton-avatar {
+        border-radius: unset !important;
+        max-width: 220px;
+        width: 100%;
+        height: 222px;
+        margin-bottom: 8px;
+    }
+    .ant-skeleton-paragraph {
+        padding-right: 16px;
+        padding-left: 16px;
+    }
+    @media screen and (max-width: ${MEDIA_WIDTHS.upToSmall}px) {
+        .ant-skeleton-avatar {
+            max-width: 132px;
+            height: 132px;
+        }
+    }
+`
 
 const COUNT_ITEM_LOAD_MORE = 10
 
 const ListNFT = () => {
-    const [initLoading, setInitLoading] = useState(true)
-    const [loading, setLoading] = useState(false)
     const [nftCollectionName, setNftCollectionName] = useState([])
     const [list, setList] = useState([])
     const [pageLoadMore, setPageLoadMore] = useState(0)
 
-    const { data, getNftAllCollectionAction, pagination, isLoading, queries } = useGetNftAllCollection()
+    const { data, pagination, queries } = useGetNftAllCollection()
 
-    const { page, pageSize, total } = pagination
+    const { pageSize, total } = pagination
 
     useEffect(() => {
         setList(data?.records)
@@ -47,18 +76,20 @@ const ListNFT = () => {
             <ButtonImage className="btn-image" imageButton={BUTTON_IMAGE} onClick={onLoadMore} text="Load More" color="quote_text" fontWeight="fw_700" />
         ) : null;
     return (
-        <>
+        <Wrapper>
             <Row gutter={[24, 40]}>
                 {
                     list && list.map((item, index) => (
-                        <Skeleton key={index} active avatar title={false} loading={item?.loading}>
-                            <CardSearch url={item?.logo_url} name={item?.collection_name} title={item?.description} />
-                        </Skeleton>
+                        <Col span={12} xl={6} md={8} key={index}>
+                            <Skeleton className="ske" active avatar title={false} loading={item?.loading}>
+                                <CardSearch url={item?.logo_url || item?.banner_url} name={item?.collection_name} title={item?.description} />
+                            </Skeleton>
+                        </Col>
                     ))
                 }
             </Row>
             {loadMore}
-        </>
+        </Wrapper>
     )
 }
 

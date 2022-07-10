@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import HomeLayout from '../layouts/home'
 import { FilterBlock } from './components'
-import { TextNormal, Container } from 'Components'
+import { TextNormal, Container, SkeletonCardSearch } from 'Components'
 import { CLOUD, COIN, RIGHT_HAND, WELCOME } from 'Assets'
 import { useGetNftAllCollection } from 'Hooks'
 import { ListWrapper, Wrapper } from './styled'
 import ListNFT from './components/list'
+import { Row } from 'antd'
 
 const HomeScreen = () => {
   const [isAvailable, setIsAvailable] = useState(false)
