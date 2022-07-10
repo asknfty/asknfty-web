@@ -12,7 +12,7 @@ export const useGetNftAllCollection = () => {
 
     const dispatch = useDispatch()
 
-    const { data, isLoading, filter, pagination } = useSelector(makeNftCollection())
+    const { data, isLoading, filter, pagination, queries } = useSelector(makeNftCollection())
 
     const getNftAllCollectionAction = (payload) => dispatch(getNftAllCollection(payload))
     const deleteNftAllCollectionAction = (payload) => dispatch(deleteNftAllCollection(payload))
@@ -22,6 +22,7 @@ export const useGetNftAllCollection = () => {
         data,
         filter,
         pagination,
+        queries,
         getNftAllCollectionAction,
         deleteNftAllCollectionAction
     }

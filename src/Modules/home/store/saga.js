@@ -8,6 +8,7 @@ import { GET_NFT_ALL_COLLECTION, GET_NFT_ALL_ITEM } from './constants'
 import { getNftAllCollectionAPI, getNftAllItemAPI } from 'Apis'
 
 export function* getNftAllCollectionSaga({ payload }) {
+    const { queries } = payload
     try {
         const { code, data } = yield getNftAllCollectionAPI(payload)
         const { result: nftAllCollection, ...pagination } = data
@@ -16,7 +17,8 @@ export function* getNftAllCollectionSaga({ payload }) {
                 type: SUCCESS(GET_NFT_ALL_COLLECTION),
                 payload: {
                     data,
-                    pagination
+                    pagination,
+                    queries: payload.params.queries
                 }
             })
         }
