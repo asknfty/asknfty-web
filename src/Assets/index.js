@@ -52,6 +52,7 @@ import CLOUD from './images/cloud.png'
 import RIGHT_HAND from './images/right-hand.png'
 import COIN from './images/coin.png'
 import BTN_X from './images/btn-x.png'
+import NOT_FOUND from './images/not-found.png'
 
 // ICON
 
@@ -115,5 +116,6 @@ export {
     RIGHT_HAND,
     COIN,
     CLOUD,
-    BTN_X
+    BTN_X,
+    NOT_FOUND
 }

@@ -1,6 +1,6 @@
 const parseValue = (key, value) => {
   if (key === 'queries') {
-    return `:collection_name_or_description=${value}`
+    return `=collection_name__OR__description:${value}`
   }
   return `=${value}`
 }
