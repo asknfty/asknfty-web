@@ -1,7 +1,7 @@
-import { Button, Col, List, Row, Skeleton } from 'antd'
+import { Button, Col, List, Row, Skeleton, Space } from 'antd'
 import { getNftAllCollectionAPI } from 'Apis'
-import { BUTTON_IMAGE } from 'Assets'
-import { ButtonImage } from 'Components'
+import { BUTTON_IMAGE, NOT_FOUND } from 'Assets'
+import { ButtonImage, TextNormal } from 'Components'
 import CardSearch from 'Components/cardSearch'
 import { useGetNftAllCollection } from 'Hooks'
 import React, { useState, useEffect } from 'react'
@@ -35,6 +35,13 @@ const Wrapper = styled.div`
         .ant-skeleton-avatar {
             max-width: 132px;
             height: 132px;
+        }
+    }
+    .not-found {
+        margin: 0 auto;
+        text-align: center;
+        img {
+            margin-bottom: 24px;
         }
     }
 `
@@ -86,6 +93,11 @@ const ListNFT = () => {
                             </Skeleton>
                         </Col>
                     ))
+                }
+                {total === 0 && <div className="not-found">
+                    <img src={NOT_FOUND} alt="not-found" />
+                    <TextNormal fontSize="size_20" fontWeight="fw_700">No collections found. Please try another keyword.</TextNormal>
+                </div>
                 }
             </Row>
             {loadMore}
