@@ -39,7 +39,7 @@ const ListNFT = () => {
     }
 
     const loadMore =
-        (data?.records && total -  > 0) ? (
+        (data?.records && total - COUNT_ITEM_LOAD_MORE > 0) ? (
             <ButtonImage className="btn-image" imageButton={BUTTON_IMAGE} onClick={onLoadMore} text="Load More" color="quote_text" fontWeight="fw_700" />
         ) : null;
     return (

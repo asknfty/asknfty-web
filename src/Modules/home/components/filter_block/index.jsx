@@ -26,7 +26,6 @@ const FilterBlock = () => {
   const {
     queries
   } = watch()
-  console.log('queries', queries)
 
   const handleReset = useCallback((formData) => {
     reset({
@@ -36,8 +35,7 @@ const FilterBlock = () => {
   }, [])
 
   const onSubmit = useCallback((formData) => {
-    console.log('123')
-    getNftAllCollectionAction({ params: { page: 0, limit: 10, queries: formData.queries } })
+    getNftAllCollectionAction({ params: { page: 0, pageSize: 10, queries: formData.queries } })
   }, [])
 
   console.log('rerender')

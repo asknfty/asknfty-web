@@ -31,13 +31,13 @@ const HomeScreen = () => {
             <ListNFT />
           </ListWrapper>
         </Container>
-        <div className="cloud-img">
+        <div className="cloud-img hidden-mobile">
           <img src={CLOUD} alt="cloud" />
         </div>
-        <div className="coin-img">
+        <div className="coin-img hidden-mobile">
           <img src={COIN} alt="coin" />
         </div>
-        <div className="hand">
+        <div className="hand hidden-mobile">
           <img src={RIGHT_HAND} alt="right-hand" />
         </div>
       </Wrapper >
