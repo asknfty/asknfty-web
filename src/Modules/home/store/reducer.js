@@ -6,7 +6,8 @@ const nftAllCollection = {
     data: [],
     pagination: {},
     filter: {},
-    error: null
+    error: null,
+    queries: ''
 }
 
 const nftAllItem = {
@@ -56,14 +57,15 @@ function loadNftAllCollection(state) {
 }
 
 function loadNftAllCollectionSuccess(state, { payload }) {
-    const { data, pagination, filter } = payload
+    const { data, pagination, filter, queries } = payload
     return updateObject(state, {
         nftAllCollection: {
             ...state.nftAllCollection,
             isLoading: false,
             data,
             pagination,
-            filter
+            filter,
+            queries
         }
     })
 }

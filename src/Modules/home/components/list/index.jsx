@@ -1,5 +1,7 @@
 import { Button, List, Row, Skeleton } from 'antd'
+import { getNftAllCollectionAPI } from 'Apis';
 import { BUTTON_IMAGE } from 'Assets';
+import axios from 'axios';
 import { ButtonImage } from 'Components';
 import CardSearch from 'Components/cardSearch';
 import { useGetNftAllCollection } from 'Hooks';
@@ -13,8 +15,9 @@ const ListNFT = () => {
     const [loading, setLoading] = useState(false)
     const [nftCollectionName, setNftCollectionName] = useState([])
     const [list, setList] = useState([])
+    const [pageLoadMore, setPageLoadMore] = useState(0)
 
-    const { data, getNftAllCollectionAction, pagination, isLoading } = useGetNftAllCollection()
+    const { data, getNftAllCollectionAction, pagination, isLoading, queries } = useGetNftAllCollection()
 
     const { page, pageSize, total } = pagination
 
@@ -31,8 +34,9 @@ const ListNFT = () => {
                 }))
             )
         )
-        getNftAllCollectionAction({ params: { page: page + 1, pageSize: COUNT_ITEM_LOAD_MORE, queries: 'nam' } })
-        const newData = nftCollectionName.concat(data?.records)
+        const loadMoreData = await getNftAllCollectionAPI({ params: { page: pageLoadMore + 1, pageSize: pageSize, queries: queries } })
+        setPageLoadMore(pageLoadMore + 1)
+        const newData = nftCollectionName.concat(loadMoreData.data?.records)
         setNftCollectionName(newData)
         setList(newData)
         window.dispatchEvent(new Event('resize'))
@@ -47,7 +51,7 @@ const ListNFT = () => {
             <Row gutter={[24, 40]}>
                 {
                     list && list.map((item, index) => (
-                        <Skeleton key={index} active avatar title={false} loading={loading}>
+                        <Skeleton key={index} active avatar title={false} loading={item?.loading}>
                             <CardSearch url={item?.logo_url} name={item?.collection_name} title={item?.description} />
                         </Skeleton>
                     ))
@@ -55,28 +59,6 @@ const ListNFT = () => {
             </Row>
             {loadMore}
         </>
-
-
-        // <List
-        //     className="loadmore-list"
-        //     itemLayout="horizontal"
-        //     loadMore={loadMore}
-        //     dataSource={list}
-        //     grid={{
-        //         gutter: [24, 40],
-        //         xs: 2,
-        //         sm: 3,
-        //         md: 4,
-        //         lg: 4,
-        //         xl: 4,
-        //         xxl: 4
-        //     }}
-        //     renderItem={(item) => (
-        //         <Skeleton active avatar title={false} loading={isLoading}>
-        //             <CardSearch url={item?.logo_url} name={item?.collection_name} title={item?.description} />
-        //         </Skeleton>
-        //     )}
-        // />
     )
 }
 
