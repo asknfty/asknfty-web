@@ -29,7 +29,7 @@ const NFTDetailScreen = () => {
       <Header data={data} />
       <Detail data={data} dataCollection={dataCollection} />
       <List dataCollection={dataCollection} />
-    </HomeLayout>
+    </HomeLayout >
   )
 }
 
