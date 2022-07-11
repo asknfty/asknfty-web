@@ -6,6 +6,8 @@ import { ThemeProvider as StyledComponentsThemeProvider, createGlobalStyle, css 
 import colors from './colors'
 import { fontSize, fontWeight } from './fonts'
 
+export * from './styled'
+
 export const MEDIA_WIDTHS = {
   upToExtraSmall: 500,
   upToSmall: 720,

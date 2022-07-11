@@ -53,13 +53,22 @@ import RIGHT_HAND from './images/right-hand.png'
 import COIN from './images/coin.png'
 import BTN_X from './images/btn-x.png'
 import NOT_FOUND from './images/not-found.png'
+import BG_COLLECTION_DETAIL from './images/background-collection-detail.png'
+import BG_BUTTON_TURN_ON_ALERT from './images/bg-btn-turn-on-alert.png'
+import BG_BUTTON_LOAD_MORE from './images/bg-btn-load-more.png'
 
 // ICON
-
-// import ICON_ARROW_DOWN from './icons/arrow-down.svg'
-// import ICON_ARROW_UP_LONG from './icons/arrow-down.svg'
+import ICON_EYE from './images/icon-eye.png'
+import ICON_HEART from './images/icon-heart.png'
+import ICON_HEART_OUTLINED from './images/icon-heart-outlined.png'
+// ICON ARROW
 import ICON_ARROW_DOWN from './images/arrow-down.png'
 import ICON_ARROW_UP_LONG from './images/arrow-up-long.png'
+import ICON_INCLUDE from './images/icon-include.png'
+import ICON_ON_EXCHANGE from './images/icon-on-exchange.png'
+import ICON_FLOOR_PRICE from './images/icon-floor-price.png'
+import ICON_VOLUME_TRADED from './images/icon-volume-traded.png'
+import ICON_NFT_PRICE from './images/icon-nft-price.png'
 
 export {
     IMG_DEFAULT,
@@ -117,5 +126,16 @@ export {
     COIN,
     CLOUD,
     BTN_X,
-    NOT_FOUND
+    NOT_FOUND,
+    BG_COLLECTION_DETAIL,
+    BG_BUTTON_TURN_ON_ALERT,
+    ICON_EYE,
+    BG_BUTTON_LOAD_MORE,
+    ICON_INCLUDE,
+    ICON_HEART,
+    ICON_HEART_OUTLINED,
+    ICON_FLOOR_PRICE,
+    ICON_ON_EXCHANGE,
+    ICON_VOLUME_TRADED,
+    ICON_NFT_PRICE
 }

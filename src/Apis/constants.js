@@ -5,7 +5,7 @@ const END_POINT = {
         // GET_ALL_NFT_COLLECTION: 'nft-collections',
         GET_ALL_NFT_COLLECTION: 'nft-collections',
         // get details collection with id
-        GET_DETAILS_NFT_COLLECTION: (nftCollectionsId) => `nft-collections/${nftCollectionsId}`,
+        GET_DETAILS_NFT_COLLECTION: (collectionId) => `nft-collections/${collectionId}`,
         // get details nft item
         GET_DETAILS_NFT_ITEM: (nftId) => `nfts/${nftId}`,
         // search nft item with queries, filters, sorts
