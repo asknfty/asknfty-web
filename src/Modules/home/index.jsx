@@ -32,6 +32,36 @@ const HomeScreen = () => {
             <ListNFT />
           </ListWrapper>
         </Container>
+        <Container>
+          <div className="search-block">
+            <img src={WELCOME} alt="welcome" />
+            <div className="label">
+              <TextNormal fontSize="size_32" fontWeight="fw_700">
+                Find a NFT Collection
+              </TextNormal>
+            </div>
+          </div>
+        </Container>
+        <Container>
+          <div className="search-block">
+            <img src={WELCOME} alt="welcome" />
+            <div className="label">
+              <TextNormal fontSize="size_32" fontWeight="fw_700">
+                Find a NFT Collection
+              </TextNormal>
+            </div>
+          </div>
+        </Container>
+        <Container>
+          <div className="search-block">
+            <img src={WELCOME} alt="welcome" />
+            <div className="label">
+              <TextNormal fontSize="size_32" fontWeight="fw_700">
+                Find a NFT Collection
+              </TextNormal>
+            </div>
+          </div>
+        </Container>
         <div className="cloud-img hidden-mobile">
           <img src={CLOUD} alt="cloud" />
         </div>

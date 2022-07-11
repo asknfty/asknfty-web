@@ -169,7 +169,8 @@ function deleteNftAllCollection(state) {
         nftAllCollection: {
             ...state.nftAllCollection,
             isLoading: false,
-            data: []
+            data: [],
+            queries: ''
         }
     })
 }

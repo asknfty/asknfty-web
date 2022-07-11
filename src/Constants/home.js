@@ -5,19 +5,19 @@ export const NFT_OPTIONS = [
 
 export const FILTER_KEYS = {
   CONTRACT_DEPLOYMENT: 'contract_deployment_at',
-  FLOOR_PRICE: 'floor_price_wei_24h',
+  FLOOR_PRICE: 'floor_price_wei_24_h',
   TOTAL_VOLUME: 'total_volume_wei',
-  VOLUME_24H: 'volume_wei_24h',
-  EXCHANGE_VOLUME_CHANGE_24H: 'exchange_volume_change_24h',
+  VOLUME_24H: 'volume_wei_24_h',
+  EXCHANGE_VOLUME_CHANGE_24H: 'exchange_volume_change_24_h',
   MARKET_CAP: 'market_cap_wei'
 }
 
 export const SORT_KEYS = {
   CONTRACT_DEPLOYMENT: '-contract_deployment_at',
-  FLOOR_PRICE: 'floor_price_wei_24h',
+  FLOOR_PRICE: 'floor_price_wei_24_h',
   TOTAL_VOLUME: 'total_volume_wei',
-  VOLUME_24H: 'volume_wei_24h',
-  EXCHANGE_VOLUME_CHANGE_24H: 'exchange_volume_change_24h',
+  VOLUME_24H: 'volume_wei_24_h',
+  EXCHANGE_VOLUME_CHANGE_24H: 'exchange_volume_change_24_h',
   MARKET_CAP: '-market_cap_wei',
   RELEVANCE: 'relevance'
 }

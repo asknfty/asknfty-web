@@ -6,7 +6,7 @@ export const DropdownWrapper = styled.div`
   justify-content: space-between;
   align-items: center;
   width: 122px;
-  height: 56px;
+  height: 64px;
   background: white;
   padding: 0 16px;
   border: 2px solid ${({ theme }) => theme.bd_grey_low};
@@ -35,7 +35,6 @@ export const DropdownTitle = styled.div`
 export const CollapseStyled = styled(Collapse)`
   display: flex;
   font-size: 16px;
-  // padding: 16px 0;
   border-bottom: 1px solid ${({ theme }) => theme.bd_grey_low};
   position: relative;
 
@@ -51,6 +50,11 @@ export const CollapseStyled = styled(Collapse)`
         }
       }
     }
+  }
+
+  .range__filter {
+    display: flex;
+    justify-content: space-between;
   }
 `
 

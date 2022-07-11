@@ -3,8 +3,9 @@ import AxiosClient from './api'
 import END_POINT from './constants'
 
 function getNftAllCollectionAPI({ params }) {
-    console.log('apiparams', params)
-    return AxiosClient.get(`${END_POINT.NFT.GET_ALL_NFT_COLLECTION}${parseParamsToQueryString(params)}`)
+    const query = parseParamsToQueryString(params)
+    console.log('Boy 🚀 ~ file: nft.api.js ~ line 8 ~ getNftAllCollectionAPI ~ query', query)
+    return AxiosClient.get(`${END_POINT.NFT.GET_ALL_NFT_COLLECTION}${query.replace(/%20/g, ' ')}`)
         .then((res) => res.data)
 }
 
