@@ -16,6 +16,8 @@ import Checkbox from './checkbox'
 import CheckboxGroup from './checkbox_group'
 import { ButtonImage } from './button'
 import SkeletonCardSearch from './skeleton'
+import CardSearch from './cardSearch'
+import CardDetail from './cardDetail'
 export * from './form'
 
 export {
@@ -51,5 +53,9 @@ export {
     ButtonImage,
 
     //skeleton
-    SkeletonCardSearch
+    SkeletonCardSearch,
+
+    //cardItem
+    CardDetail,
+    CardSearch
 }
