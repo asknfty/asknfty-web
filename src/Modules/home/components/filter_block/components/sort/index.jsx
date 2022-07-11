@@ -11,7 +11,7 @@ import {
 } from 'Assets'
 import { ButtonGroup, DropdownItem, DropdownTitle, DropdownWrapper } from './styled'
 
-const Sort = ({ sorts, setValue }) => {
+const Sort = ({ sorts, setValue, queries }) => {
   const [sortsActive, setSortsActive] = useState([])
   const [visibleDropdown, setVisibleDropdown] = useState(false)
 
@@ -86,7 +86,7 @@ const Sort = ({ sorts, setValue }) => {
             label: (
               <DropdownItem className={`${sortsActive.includes(item.key) ? 'active' : ''}`}>
                 {item.label}
-                <img className="icon" src={ICON_ARROW_UP_LONG} alt="icon" />
+                <img className="icon__active" src={ICON_ARROW_UP_LONG} alt="iconActive" />
               </DropdownItem>
             ),
             key: item.key,
@@ -117,8 +117,8 @@ const Sort = ({ sorts, setValue }) => {
     <Dropdown overlay={menuSort} trigger={['click']} placement="bottomRight" visible={visibleDropdown}>
       <DropdownWrapper onClick={onTouch}>
         <TextNormal className="dropdown__value" fontSize="size_20" fontWeight="fw_400">
-          Sort:{' '}
-          {sorts.map((s, index) =>
+          Sort:
+          {(sorts || []).map((s, index) =>
             index === 0 ? GET_LABEL_BY_VALUE[s] : `, ${GET_LABEL_BY_VALUE[s]}`
           )}
         </TextNormal>

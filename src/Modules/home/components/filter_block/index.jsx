@@ -13,30 +13,35 @@ import { useGetNftAllCollection } from 'Hooks'
 
 const DEFAULT_VALUE = {
   queries: '',
+  filters: [],
+  sorts: []
 }
 
-const FilterBlock = () => {
-  const { getNftAllCollectionAction, deleteNftAllCollectionAction } = useGetNftAllCollection()
+const FilterBlock = () =>
+{
+  const { getNftAllCollectionAction, deleteNftAllCollectionAction, queries } = useGetNftAllCollection()
   const form = useForm({
-    resolver: yupResolver(FilterBlockSchema())
+    resolver: yupResolver(FilterBlockSchema()),
+    defaultValues: DEFAULT_VALUE
   })
 
-  const { handleSubmit, reset, watch } = form
+  const { handleSubmit, reset, watch, setValue } = form
 
-  const {
-    queries
-  } = watch()
+  const [sorts, filters, queriesWatch] = watch(['sorts', 'filters', 'queries'])
 
-  const handleReset = useCallback((formData) => {
+  const handleReset = useCallback((formData) =>
+  {
     reset({
       queries: null
     })
     deleteNftAllCollectionAction()
   }, [])
 
-  const onSubmit = useCallback((formData) => {
-    getNftAllCollectionAction({ params: { page: 0, pageSize: 10, queries: formData.queries } })
-  }, [])
+  const onSubmit = (formData) =>
+  {
+    const { queries } = formData
+    getNftAllCollectionAction({ params: { page: 0, pageSize: 10, queries, filters, sorts } })
+  }
 
   console.log('rerender')
 
@@ -48,11 +53,13 @@ const FilterBlock = () => {
           placeholder="Search by keyword..."
           suffix={
             <>
-              {queries && queries.length > 0 && <img onClick={handleReset} src={BTN_X} alt="icon-search" />}
+              {(queriesWatch && queriesWatch.length > 0) && <img onClick={handleReset} src={BTN_X} alt="icon-search" />}
               <img onClick={handleSubmit(onSubmit)} src={BTN_SEARCH_RED} alt="icon-search" />
             </>
           }
         />
+        <Filter filters={filters} setValue={setValue} queries={queries} />
+        <Sort sorts={sorts} setValue={setValue} queries={queries} />
       </form>
     </FormProvider>
   )

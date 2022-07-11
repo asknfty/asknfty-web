@@ -1,9 +1,8 @@
 import React from 'react'
-import { Image, Input } from 'antd'
+import { Input } from 'antd'
 import { useController, useFormContext } from 'react-hook-form'
 import styled from 'styled-components'
 import { FormItemStyled } from './styled'
-import { SEARCH_ICON } from 'Assets'
 
 const WrapperLabel = styled.div`
   width: 100%;

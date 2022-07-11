@@ -4,6 +4,7 @@ import END_POINT from './constants'
 
 function getNftAllCollectionAPI({ params }) {
     console.log('apiparams', params)
+    parseParamsToQueryString(params)
     return AxiosClient.get(`${END_POINT.NFT.GET_ALL_NFT_COLLECTION}${parseParamsToQueryString(params)}`)
         .then((res) => res.data)
 }

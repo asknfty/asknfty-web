@@ -1,36 +1,37 @@
 import React, { useState } from 'react'
-import { Collapse, Dropdown, Menu, Slider } from 'antd'
-import { ButtonImage, Image, TextNormal } from 'Components'
-import { FILTER_KEYS, FILTER_OPTIONS, GET_LABEL_BY_VALUE, SORT_KEYS } from 'Constants'
-import { BG_BUTTON_APPLY_ACTIVE, BG_BUTTON_APPLY_UN_ACTIVE, BG_BUTTON_RESET, ICON_ARROW_DOWN } from 'Assets'
+import { Dropdown, Menu } from 'antd'
+import { ButtonImage, FormInputNumber, Image, TextNormal } from 'Components'
+import { FILTER_OPTIONS, GET_LABEL_BY_VALUE } from 'Constants'
+import { BG_BUTTON_APPLY_ACTIVE, BG_BUTTON_RESET, ICON_ARROW_DOWN } from 'Assets'
 import { ButtonGroup, CollapseStyled, DropdownTitle, DropdownWrapper } from './styled'
+import { FormProvider, useForm } from 'react-hook-form'
 
 const { Panel } = CollapseStyled
 
 const Filter = ({ filters, setValue }) =>
 {
+  const form = useForm()
+
+  const { handleSubmit } = form
+
   const [filtersActive, setFiltersActive] = useState([])
   const [visibleDropdown, setVisibleDropdown] = useState(false)
 
-  const handleSelectSort = (value) =>
+  const onApply = (formData) =>
   {
-    const { key } = value
-    let newSortValues = [...filtersActive]
-    if (newSortValues.includes(key)) {
-      const indexKey = newSortValues.findIndex((v) => v === key)
-      newSortValues.splice(indexKey, 1)
-    } else if (key === SORT_KEYS.RELEVANCE) {
-      newSortValues = [key]
-    } else {
-      newSortValues.push(key)
-    }
-    setFiltersActive(newSortValues)
-  }
+    const hash = {}
 
-  const onApply = () =>
-  {
+    Object.keys(formData).forEach((key) => {
+      const keyMain = key.split('-')[0]
+      if (hash[keyMain] !== undefined) {
+        hash[keyMain] = `${hash[keyMain]} ${formData[key]}`
+      } else {
+        hash[keyMain] = formData[key]
+      }
+    })
+    
     setVisibleDropdown(false)
-    setValue('filters', filtersActive)
+    setValue('filters', Object.keys(hash).map((key) => `${key}:${hash[key]}`))
   }
 
   const onReset = () =>
@@ -51,11 +52,11 @@ const Filter = ({ filters, setValue }) =>
         <ButtonGroup>
           <ButtonImage
             className="btn__apply"
-            imageButton={filtersActive.length ? BG_BUTTON_APPLY_ACTIVE : BG_BUTTON_APPLY_UN_ACTIVE}
+            imageButton={BG_BUTTON_APPLY_ACTIVE}
             text="Apply"
             fontSize="size_20"
             fontWeight="fw_700"
-            onClick={filtersActive.length ? onApply : null}
+            onClick={handleSubmit(onApply)}
           />
           <ButtonImage
             imageButton={BG_BUTTON_RESET}
@@ -73,32 +74,37 @@ const Filter = ({ filters, setValue }) =>
   ]
 
   const menuFilter = (
-    <Menu
-      triggerSubMenuAction="click"
-      items={menus.map((item, index) =>
-      {
-        if (item.not_filter) {
+    <FormProvider {...form}>
+      <Menu
+        triggerSubMenuAction="click"
+        items={menus.map((item, index) =>
+        {
+          if (item.not_filter) {
+            return {
+              label: item.label,
+              key: item.key
+            }
+          }
           return {
-            label: item.label,
+            label: (
+              <CollapseStyled
+                onChange={(key) => console.log(key)}
+                expandIcon={({ isActive }) => <img style={{ transform: isActive && 'rotate(180deg)' }} className="icon__expand" src={ICON_ARROW_DOWN} alt="icon" />}
+                ghost
+              >
+                <Panel header={item.label} key={index}>
+                  <div className="range__filter">
+                    <FormInputNumber name={`${item.key}-from`} />
+                    <FormInputNumber name={`${item.key}-to`} />
+                  </div>
+                </Panel>
+              </CollapseStyled>
+            ),
             key: item.key
           }
-        }
-        return {
-          label: (
-            <CollapseStyled
-              onChange={(key) => console.log(key)}
-              expandIcon={({ isActive }) => <img style={{ transform: isActive && 'rotate(180deg)' }} className="icon__expand" src={ICON_ARROW_DOWN} alt="icon" />}
-              ghost
-            >
-              <Panel header={item.label} key="1">
-                <Slider min={0} max={100} />
-              </Panel>
-            </CollapseStyled>
-          ),
-          key: item.key
-        }
-      })}
-    />
+        })}
+      />
+    </FormProvider>
   )
 
   const onTouch = () => setVisibleDropdown(!visibleDropdown)
