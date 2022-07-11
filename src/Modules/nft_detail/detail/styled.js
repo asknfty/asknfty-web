@@ -29,7 +29,10 @@ export const DetailWrapper = styled.div`
       }
     }
   }
+<<<<<<< HEAD
   @media screen and (max-width: ${MEDIA_WIDTHS.upToMedium}px) {
     padding: 40px 16px;
   }
+=======
+>>>>>>> 7da7a32 (Implement NFT-Detail)
 `

@@ -7,7 +7,6 @@ import { GET_NFT_DETAIL } from './constants'
 import { getNftItemDetailAPI } from 'Apis'
 
 export function* getNftDetailSaga({ payload }) {
-    const { callback } = payload
     try {
         const { code, data } = yield getNftItemDetailAPI(payload)
         if (code === 'MAR0000') {
@@ -15,9 +14,6 @@ export function* getNftDetailSaga({ payload }) {
                 type: SUCCESS(GET_NFT_DETAIL),
                 data
             })
-            if (data.collection) {
-                callback(data.collection.id)
-            }
         }
     } catch (error) {
         yield put({

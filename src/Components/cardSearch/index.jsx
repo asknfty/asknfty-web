@@ -2,14 +2,14 @@ import React from 'react'
 import { Wrapper } from './styled'
 import { TextNormal, Image } from 'Components'
 import { IMG_DEFAULT } from 'Assets'
-import { useHistories } from 'Hooks'
 import { useHistory } from 'react-router-dom'
+import { ROUTE_NAMES } from 'Routes/constant'
 
 const CardSearch = ({ url, name, title, id }) => {
     const history = useHistory()
 
     const goToDetail = () => {
-        history.push(`/collection-detail/${id}`)
+        history.push(ROUTE_NAMES.COLLECTION_DETAIL(id))
     }
 
     return (

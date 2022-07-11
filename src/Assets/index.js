@@ -80,7 +80,8 @@ import ICON_NFT_PRICE from './images/icon-nft-price.png'
 import IMAGE_BTN_PREV from './images/img-btn-prev.png'
 import IMAGE_BTN_NEXT from './images/img-btn-next.png'
 
-export {
+export
+{
     IMG_DEFAULT,
     LOGO_COMPANY,
     SEARCH_ICON,

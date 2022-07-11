@@ -4,12 +4,13 @@ import { TextNormal, Image } from 'Components'
 import { IMG_DEFAULT } from 'Assets'
 import PropTypes from 'prop-types'
 import { useHistory } from 'react-router-dom'
+import { ROUTE_NAMES } from 'Routes/constant'
 
 const CardDetail = ({ url, favorites, order, name, price, id, ...rest }) => {
   const history = useHistory()
 
   const goToDetail = () => {
-    history.push(`/nft-detail/${id}`)
+    history.push(ROUTE_NAMES.NFT_DETAIL(id))
   }
   return (
     <Wrapper {...rest}>
@@ -38,7 +39,7 @@ CardDetail.defaultProps = {
   url: '',
   favorites: 0,
   order: '',
-  name: 'nothing',
+  name: '',
   price: 0
 }
 
