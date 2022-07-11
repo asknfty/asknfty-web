@@ -5,10 +5,19 @@ import CollectionList from './collection_list'
 import Description from './description'
 import MainInfo from './main_info'
 import { Wrapper, Container, MainContent } from './styled'
+import { useParams } from 'react-router-dom'
+import { useGetDetailNftCollection } from 'Hooks'
+import { useEffect } from 'react'
 
 const { TabPane } = Tabs
 
 const CollectionDetailScreen = () => {
+  let { collectionId } = useParams()
+  console.log('ci', collectionId)
+  const { data, getDetailNftCollectionAction } = useGetDetailNftCollection()
+  useEffect(() => {
+    // getDetailNftCollectionAction({ params: { collectionId: collectionId } })
+  }, [])
   return (
     <HomeLayout>
       <Wrapper>

@@ -32,7 +32,7 @@ export default function AppRoutes({ isOnline = true }) {
                     path="/about-us"
                     component={AboutScreen}
                 />
-                <PublicRoute exact path="/collection-detail" component={CollectionDetailScreen} />
+                <PublicRoute exact path="/collection-detail/:collectionId" component={CollectionDetailScreen} />
             </Switch>
         </Suspense>
     )
