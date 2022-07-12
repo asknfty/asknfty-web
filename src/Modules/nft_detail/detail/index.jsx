@@ -14,7 +14,7 @@ const Detail = ({ data, dataCollection }) => {
     chain
   } = data
 
-  const { collection_name, max_items } = dataCollection
+  const { collection_name, current_number_of_items } = dataCollection
 
   return (
     <DetailWrapper>
@@ -27,7 +27,7 @@ const Detail = ({ data, dataCollection }) => {
       <Row className="detail__content">
         <Col span={24} xl={12} className="detail__content__left">
           <TextNormal className="detail__content__left--title" color="title_grey">
-            <TextNormal color="text_blue">{collection_name}</TextNormal>{token_count} of {max_items}
+            <TextNormal color="text_blue">{collection_name}</TextNormal>{token_count} of {current_number_of_items}
           </TextNormal>
           <div className="detail__content__left--content">
             <div className="item">

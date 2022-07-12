@@ -13,7 +13,7 @@ const List = ({ dataCollection }) => {
     slidesToScroll: 3
   }
 
-  const { logo_url, collection_name, max_items } = dataCollection
+  const { logo_url, collection_name, current_number_of_items } = dataCollection
   return (
     <ListWrapper>
       <TextNormal fontWeight="fw_700" fontSize="size_32" color="text_grey">
@@ -28,7 +28,7 @@ const List = ({ dataCollection }) => {
             {collection_name}
           </TextNormal>
           <TextNormal color="title_grey" marginBottom={10} marginTop={10}>
-            {max_items} NFTs
+            {current_number_of_items} NFTs
           </TextNormal>
           {/* <TextNormal color="title_grey" className="create__by">
             By
