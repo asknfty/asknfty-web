@@ -2,7 +2,7 @@ import styled from "styled-components"
 import { MEDIA_WIDTHS } from "Themes"
 
 export const Wrapper = styled.div`
- max-width: 256px;
+    max-width: 256px;
     transition: opacity 200ms ease 0s;
     box-shadow: 6px 6px 0px #636363;
     border: 1px solid #4E4B4B;
