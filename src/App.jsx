@@ -8,6 +8,9 @@ import { store } from '.'
 import { BrowserRouter } from 'react-router-dom'
 import 'antd/dist/antd.css'
 
+import 'slick-carousel/slick/slick.css'
+import 'slick-carousel/slick/slick-theme.css'
+
 const LoadingStyled = styled.div`
     height: 100vh;
     display: flex;

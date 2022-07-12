@@ -2,11 +2,14 @@ import styled from 'styled-components'
 import { MEDIA_WIDTHS } from 'Themes'
 
 export const ListWrapper = styled.div`
-  padding: 40px 160px;
+  padding: 40px 0 40px 160px;
 
   .list__content {
     margin-top: 40px;
+    display: flex;
+    width: 100%;
     &__left {
+      margin-right: 52px;
       &--avatar {
         margin-bottom: 20px;
       }
@@ -15,6 +18,18 @@ export const ListWrapper = styled.div`
         align-items: center;
         .ant-avatar {
           margin: 0 4px 0 10px;
+        }
+      }
+    }
+    &__right {
+      overflow-x: hidden;
+      .btn__group {
+        margin-top: 30px;
+        .ant-image {
+          cursor: pointer;
+          &:first-child {
+            margin-right: 24px;
+          }
         }
       }
     }
