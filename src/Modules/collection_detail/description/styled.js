@@ -78,7 +78,7 @@ export const Wrapper = styled.div`
         align-items: center;
         .icon__crypto__price {
           width: 22px;
-          height 22px;
+          height: 22px;
           margin-right: 8px;
           border-radius: 50%;
           background: ${({ theme }) => theme.bg_green_yellow};
@@ -138,7 +138,7 @@ export const DataRange = styled.div`
   align-items: center;
   .icon__crypto__price {
     width: 16px;
-    height 16px;
+    height: 16px;
     margin-right: 4px;
     border-radius: 50%;
     background: ${({ theme }) => theme.secondary};

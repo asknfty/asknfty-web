@@ -1,75 +1,59 @@
 import { Tabs } from 'antd'
 import HomeLayout from 'Modules/layouts/home'
-import React from 'react'
+import React, { useState } from 'react'
 import CollectionList from './collection_list'
 import Description from './description'
 import MainInfo from './main_info'
-import { Wrapper, Container, MainContent } from './styled'
+import { Wrapper, ListWrapper } from './styled'
 import { useParams } from 'react-router-dom'
-import { useGetDetailNftCollection } from 'Hooks'
+import { useGetDetailNftCollection, getNftAllItemAction } from 'Hooks'
 import { useEffect } from 'react'
+import { trimPublicAddress, ethFormat } from 'Utils'
+import { Container } from 'Components'
 
 const { TabPane } = Tabs
 
 const CollectionDetailScreen = () => {
   let { collectionId } = useParams()
-  console.log('ci', collectionId)
   const { data, getDetailNftCollectionAction } = useGetDetailNftCollection()
   useEffect(() => {
-    // getDetailNftCollectionAction({ params: { collectionId: collectionId } })
+    getDetailNftCollectionAction({ collectionId })
   }, [])
+
+  console.log('data', data)
+
+  const {
+    description,
+    logo_url,
+    banner_url,
+    collection_name,
+    collection_address,
+    floor_price_wei_24_h,
+    max_items,
+    current_number_of_items,
+    volume_wei_24_h,
+    crypto_currency
+  } = data
+
   return (
     <HomeLayout>
       <Wrapper>
-        <Container>
-          <MainInfo />
-          <Description />
-          <CollectionList />
-          {/* <DesWrapper>
-            <div className="description__item">
-              <BoxWrapper>
-                <TextNormal fontWeight="fw_800" color="text_grey" className="description__item__title">
-                  Description
-                </TextNormal>
-                <div className="description__item__content">
-                  <TextNormal color="grey_low">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Odio a, varius cursus fames quam
-                    pellentesque netus nisl. Arcu blandit proin iaculis urna. Malesuada congue quis cras
-                    viverra.
-                  </TextNormal>
-                </div>
-              </BoxWrapper>
-            </div>
-            <div className="description__item">
-              <BoxWrapper>
-                <TextNormal fontWeight="fw_800" color="text_grey" className="description__item__title">
-                  Price Estimate
-                </TextNormal>
-                <div className="description__item__content">
-                  <TextNormal color="grey_low">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Odio a, varius cursus fames quam
-                    pellentesque netus nisl. Arcu blandit proin iaculis urna. Malesuada congue quis cras
-                    viverra.
-                  </TextNormal>
-                </div>
-              </BoxWrapper>
-            </div>
-          </DesWrapper> */}
-          <MainContent>
-            {/* <CollectionWrapper>
-              <Description />
-            </CollectionWrapper> */}
-            {/* <Tabs defaultActiveKey="1">
-              <TabPane tab="Collection Info" key="1">
-                <CollectionWrapper>
-                  <Description />
-                </CollectionWrapper>
-              </TabPane>
-              <TabPane tab="NFT Items (32)" key="2">
-                NFT Items (32)
-              </TabPane>
-            </Tabs> */}
-          </MainContent>
+        <Container className="collection-container">
+          <MainInfo
+            logoUrl={logo_url}
+            bannerUrl={banner_url}
+            collectionName={collection_name}
+            collectionAddress={trimPublicAddress(collection_address, 3)}
+            floor_price_wei_24_h={ethFormat(floor_price_wei_24_h)}
+            totalItems={max_items}
+            current_number_of_items={current_number_of_items}
+            volume_wei_24_h={ethFormat(volume_wei_24_h)}
+            crypto_currency={crypto_currency === 'wei' && 'ETH'}
+          />
+          <Description description={description} />
+          <ListWrapper>
+            <CollectionList />
+          </ListWrapper>
         </Container>
       </Wrapper>
     </HomeLayout>

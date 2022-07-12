@@ -34,14 +34,13 @@ export const useGetNftAllItem = () => {
 
     const dispatch = useDispatch()
 
-    const { data, isLoading, filter, pagination } = useSelector(makeNftItem())
+    const { data, isLoading, pagination } = useSelector(makeNftItem())
 
     const getNftAllItemAction = (payload) => dispatch(getNftAllItem(payload))
 
     return {
         isLoading,
         data,
-        filter,
         pagination,
         getNftAllItemAction,
     }

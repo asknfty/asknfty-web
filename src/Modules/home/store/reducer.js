@@ -14,7 +14,6 @@ const nftAllItem = {
     isLoading: false,
     data: [],
     pagination: {},
-    filter: {},
     error: null
 }
 
@@ -87,14 +86,13 @@ function loadNftAllItem(state) {
 }
 
 function loadNftAllItemSuccess(state, { payload }) {
-    const { data, pagination, filter } = payload
+    const { data, pagination } = payload
     return updateObject(state, {
         nftAllItem: {
             ...state.nftAllItem,
             isLoading: false,
             data,
-            pagination,
-            filter
+            pagination
         }
     })
 }
@@ -144,12 +142,12 @@ function loadDetailsNftCollection(state) {
     })
 }
 
-function loadDetailsNftCollectionSuccess(state, { data }) {
+function loadDetailsNftCollectionSuccess(state, { payload }) {
     return updateObject(state, {
         nftCollectionDetail: {
             ...state.nftCollectionDetail,
             isLoading: false,
-            data
+            data: payload.data
         }
     })
 }

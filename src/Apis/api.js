@@ -13,12 +13,7 @@ import { store } from 'index'
 i18next.loadNamespaces(['error_message'])
 
 const singletonEnforcer = Symbol()
-// const BASE_URL = `${BASE_API_URL}/nft/v1`
-// const BASE_URL = `${BASE_API_URL}/api/nft/v1`
-// const BASE_URL = 'https://datausa.io/api/data?drilldowns=Nation&measures=Population'
-// const BASE_URL = 'https://randomuser.me/api/?results=100&inc=name,gender,email,nat,picture&noinfo'
 const BASE_URL = process.env.NODE_ENV === 'production' ? 'https://api.asknfty.com/nft/v1' : '/nft/v1'
-// const BASE_URL = BASE_HOST + 'nft/v1/nft-collections?queries=collection_name__OR__description:nam'
 
 export const MAINTENANCE = 'Maintainance'
 export const ERROR_MESSAGE_SERAKU_REGEX = /^E.*:.*/g

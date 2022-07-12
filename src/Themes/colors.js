@@ -89,7 +89,9 @@ export const Colors = {
     border_correct_color: '#07CF84',
 
     bg_wrong_color: 'rgba(231, 76, 60, 0.1)',
-    border_wrong_color: '#F33A27'
+    border_wrong_color: '#F33A27',
+
+    bg_green_dark: '#BDCF30'
 
 }
 

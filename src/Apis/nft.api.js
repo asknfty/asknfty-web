@@ -9,12 +9,12 @@ function getNftAllCollectionAPI({ params }) {
 }
 
 function getNftAllItemAPI({ params }) {
-    return AxiosClient.get(END_POINT.NFT.GET_ALL_NFT_ITEM, '', { params })
+    return AxiosClient.get(`${END_POINT.NFT.GET_ALL_NFT_ITEM}${parseParamsToQueryString(params)}`)
         .then((res) => res.data)
 }
 
-function getNftCollectionDetailAPI({ nftCollectionsId }) {
-    return AxiosClient.get(END_POINT.NFT.GET_DETAILS_NFT_COLLECTION(nftCollectionsId))
+function getNftCollectionDetailAPI({ collectionId }) {
+    return AxiosClient.get(END_POINT.NFT.GET_DETAILS_NFT_COLLECTION(collectionId))
         .then((res) => res.data)
 }
 
@@ -27,5 +27,5 @@ export {
     getNftAllCollectionAPI,
     getNftAllItemAPI,
     getNftCollectionDetailAPI,
-    getNftItemDetailAPI
+    getNftItemDetailAPI,
 }
