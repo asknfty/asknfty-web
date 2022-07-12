@@ -1,8 +1,8 @@
-import styled from 'styled-components'
 import { MEDIA_WIDTHS } from 'Themes'
+import styled from 'styled-components'
 
 export const Wrapper = styled.div`
-    text-align: center;
+    /* text-align: center; */
     .ske {
         background: white;
         display: flex;
@@ -13,7 +13,6 @@ export const Wrapper = styled.div`
     }
     .ant-skeleton-header {
         padding-right: unset;
-        text-align: center;
     }
     .ant-skeleton-avatar {
         border-radius: unset !important;
@@ -38,8 +37,5 @@ export const Wrapper = styled.div`
         img {
             margin-bottom: 24px;
         }
-    }
-    .btn-image {
-        text-align: center;
     }
 `

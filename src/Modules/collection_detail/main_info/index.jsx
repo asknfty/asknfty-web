@@ -1,5 +1,5 @@
 import { UserOutlined } from '@ant-design/icons'
-import { Avatar, Tabs } from 'antd'
+import { Avatar, Tabs, Row, Col } from 'antd'
 import {
   BG_BUTTON_TURN_ON_ALERT,
   ICON_EYE,
@@ -14,58 +14,52 @@ import React from 'react'
 import { BoxWrapper } from 'Themes'
 import { ImageWrapper, MainInfoWrapper } from './styled'
 
-const MainInfo = () => {
+const MainInfo = ({
+  logoUrl,
+  collectionName,
+  current_number_of_items,
+  collectionAddress,
+  totalItems,
+  crypto_currency,
+  bannerUrl,
+  floor_price_wei_24_h,
+  volume_wei_24_h
+}) => {
   return (
     <BoxWrapper>
       <ImageWrapper>
-        <Image height={320} />
-        <Avatar className="avatar" size={160} icon={<UserOutlined />} />
+        <Image className="banner-img" height={320} width="100%" style={{ backgroundImage: `url(${bannerUrl})` }} />
+        <Avatar src={logoUrl} className="avatar" size={160} icon={<UserOutlined />} />
       </ImageWrapper>
       <MainInfoWrapper>
-        <div className="main__alert">
-          <ButtonImage imageButton={BG_BUTTON_TURN_ON_ALERT} text="Turn on alert" fontSize="size_20" />
-        </div>
-        <div className="main__content">
-          <div className="main__content__left">
+        <Row gutter={[0, 22]} justify="space-between" className="main__content">
+          <Col span={24} xl={12} className="main__content__left">
             <TextNormal
               className="main__content__left__name"
               color="text_primary"
-              fontSize="size_32"
+              fontSize="size_24"
               fontWeight="fw_700"
+              lineHeight="32px"
             >
-              Omniscience
+              {collectionName}
             </TextNormal>
-            <div className="main__content__left__social">
-              <div className="main__content__left__social__item">
-                <Image src={ICON_EYE} />
-                <span>1.298</span>
-              </div>
-              <div className="main__content__left__social__item">
-                <Image src={ICON_HEART} />
-                <span>1.298</span>
-              </div>
-            </div>
             <div className="main__content__left__create">
-              <TextNormal color="bd_grey_dark">Created by</TextNormal>
-              <div className="main__content__left__create__user">
-                <Avatar size={22} icon={<UserOutlined />} />
-                <TextNormal>bterwiliger</TextNormal>
-              </div>
+              <TextNormal color="bd_grey_dark">Address</TextNormal>
               <span className="line" />
-              <TextNormal color="bd_active_red">0x52...355b</TextNormal>
+              <TextNormal color="bd_active_red">{collectionAddress}</TextNormal>
             </div>
-          </div>
-          <div className="main__content__right">
+          </Col>
+          <Col span={24} xl={12} className="main__content__right">
             <div className="main__content__right__item">
               <div className="icon">
                 <Image src={ICON_INCLUDE} />
               </div>
               <div className="data">
-                <TextNormal color="grey_text" fontSize="size_16">
-                  Include
+                <TextNormal color="title_grey" fontSize="size_16">
+                  Total Items
                 </TextNormal>
                 <TextNormal color="text_primary" fontWeight="fw_700">
-                  1456 items
+                  {totalItems} items
                 </TextNormal>
               </div>
             </div>
@@ -74,11 +68,11 @@ const MainInfo = () => {
                 <Image src={ICON_ON_EXCHANGE} />
               </div>
               <div className="data">
-                <TextNormal color="grey_text" fontSize="size_16">
-                  On Exchange
+                <TextNormal color="title_grey" fontSize="size_16">
+                  Total Supply
                 </TextNormal>
                 <TextNormal color="text_primary" fontWeight="fw_700">
-                  1456 items
+                  {current_number_of_items} items
                 </TextNormal>
               </div>
             </div>
@@ -87,11 +81,11 @@ const MainInfo = () => {
                 <Image src={ICON_FLOOR_PRICE} />
               </div>
               <div className="data">
-                <TextNormal color="grey_text" fontSize="size_16">
+                <TextNormal color="title_grey" fontSize="size_16">
                   Floor Price
                 </TextNormal>
                 <TextNormal color="text_primary" fontWeight="fw_700">
-                  1456 items
+                  {floor_price_wei_24_h} {crypto_currency}
                 </TextNormal>
               </div>
             </div>
@@ -100,16 +94,16 @@ const MainInfo = () => {
                 <Image src={ICON_VOLUME_TRADED} />
               </div>
               <div className="data">
-                <TextNormal color="grey_text" fontSize="size_16">
+                <TextNormal color="title_grey" fontSize="size_16">
                   Volume Traded
                 </TextNormal>
                 <TextNormal color="text_primary" fontWeight="fw_700">
-                  1456 items
+                  {volume_wei_24_h} {crypto_currency}
                 </TextNormal>
               </div>
             </div>
-          </div>
-        </div>
+          </Col>
+        </Row>
       </MainInfoWrapper>
     </BoxWrapper>
   )

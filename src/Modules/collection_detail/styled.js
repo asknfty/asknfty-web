@@ -6,6 +6,9 @@ export const Wrapper = styled.div`
   background: url(${BG_COLLECTION_DETAIL});
   background-size: cover;
   width: 100%;
+  .collection-container {
+    max-width: 1096px;
+  }
 `
 
 export const Container = styled.div`
@@ -67,4 +70,14 @@ export const CollectionWrapper = styled.div`
   width: 100%;
   display: flex;
 `
-
+export const ListWrapper = styled.div`
+  max-width: 1096px;
+  margin: 0 auto;
+  padding-left: 12px;
+  padding-right: 12px;
+  margin-top: 72px;
+  margin-bottom: 22px;
+  .btn-image {
+    margin-top: 40px;
+  }
+`

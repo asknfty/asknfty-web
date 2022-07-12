@@ -1,35 +1,34 @@
 import React from 'react'
 import { Wrapper } from './styled'
 import { TextNormal, Image } from 'Components'
-import { ICON_HEART_OUTLINED, IMG_DEFAULT } from 'Assets'
+import { IMG_DEFAULT } from 'Assets'
 import PropTypes from 'prop-types'
+import { useHistory } from 'react-router-dom'
 
-const CardDetail = ({ url, favorites, order, name, price }) => {
+const CardDetail = ({ url, favorites, order, name, price, id }) => {
+  const { history } = useHistory()
+
+  const goToDetail = () => {
+    history.push(`/nft-detail/${id}`)
+  }
   return (
     <Wrapper>
       <div className="wrap-content">
-        <div className="card">
-          <div className="card__favorite">
-            <Image src={ICON_HEART_OUTLINED} />
-            <TextNormal className="card__favorite__text" fontWeight="fw_800" fontSize="size_16" color="black">
-              {favorites}
-            </TextNormal>
+        <a onClick={goToDetail}>
+          <div className="card">
+            {url ?
+              <div className="card-img" style={{ backgroundImage: `url(${url})` }}></div>
+              :
+              <Image src={IMG_DEFAULT} className="card-img-default" alt="default" />}
+            <TextNormal fontSize='size_16' lineHeight="24px" color="title_grey" className="card-name">#{order || 0}</TextNormal>
+            <div className="card-title">
+              <TextNormal fontSize='size_18' fontWeight="fw_700" color="text_grey" lineHeight="24px">{name || ''}</TextNormal>
+            </div>
+            {/* <div className="card-price">
+              <TextNormal fontSize="size_20" lineHeight="28px" fontWeight="fw_700" color="white"> 1000</TextNormal>
+            </div> */}
           </div>
-          {url ? (
-            <div className="card__favorite__img" style={{ backgroundImage: `url(${url})` }}></div>
-          ) : (
-            <Image src={IMG_DEFAULT} className="card__favorite__img" alt="default" />
-          )}
-          <TextNormal marginBottom={2} fontSize="size_16" color="grey_low">
-            {`#${order}`}
-          </TextNormal>
-          <TextNormal marginBottom={4} fontWeight={800} fontSize="size_18" color="text_grey">
-            {name}
-          </TextNormal>
-          <TextNormal fontWeight={700} color="text_red">
-            {`${price} ETH`}
-          </TextNormal>
-        </div>
+        </a>
       </div>
     </Wrapper>
   )
@@ -38,7 +37,7 @@ const CardDetail = ({ url, favorites, order, name, price }) => {
 CardDetail.defaultProps = {
   url: '',
   favorites: 0,
-  order: 0,
+  order: '',
   name: 'nothing',
   price: 0
 }
@@ -46,7 +45,7 @@ CardDetail.defaultProps = {
 CardDetail.propTypes = {
   url: PropTypes.string,
   favorites: PropTypes.number,
-  order: PropTypes.number,
+  order: PropTypes.string,
   name: PropTypes.string,
   price: PropTypes.number
 }

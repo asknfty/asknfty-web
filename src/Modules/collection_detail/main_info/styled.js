@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { MEDIA_WIDTHS } from 'Themes'
 
 export const ImageWrapper = styled.div`
   position: relative;
@@ -7,11 +8,20 @@ export const ImageWrapper = styled.div`
     left: 36px;
     bottom: -80px;
   }
+  .banner-img {
+    background-position: center center;
+    background-repeat: no-repeat;
+  }
+  @media screen and (max-width: ${MEDIA_WIDTHS.upToMedium}px) {
+    .avatar {
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
 `
 
 export const MainInfoWrapper = styled.div`
-  border-top: 1px solid black;
-  padding: 32px 32px 0 36px;
+  padding-left: 32px;
 
   .main__alert {
     width: 100%;
@@ -21,12 +31,11 @@ export const MainInfoWrapper = styled.div`
 
   .main__content {
     width: 100%;
-    margin-top: 28px;
+    margin-top: 108px;
     display: flex;
     &__left {
       width: 50%;
       &__name {
-        font-family: 'Roboto Mono';
         line-height: 42px;
       }
 
@@ -45,6 +54,7 @@ export const MainInfoWrapper = styled.div`
 
       &__create {
         display: flex;
+        margin-top: 20px;
         &__user {
           margin-left: 10px;
           display: flex;
@@ -61,18 +71,15 @@ export const MainInfoWrapper = styled.div`
     }
 
     &__right {
-      width: 50%;
       display: flex;
       flex-wrap: wrap;
+      padding-right: 80px;
       &__item {
         width: 50%;
         display: flex;
         margin-bottom: 24px;
+        justify-content: center;
         .icon {
-          width: 48px;
-          height 48px;
-          border-radius: 50%;
-          background: #F7A75D;
           display: flex;
           justify-content: center;
           align-items: center;
@@ -82,6 +89,19 @@ export const MainInfoWrapper = styled.div`
           display: flex;
           flex-direction: column;
           gap: 4px;
+        }
+      }
+    }
+  }
+  @media screen and (max-width: ${MEDIA_WIDTHS.upToMedium}px) {
+    padding-left: unset;
+    .main__content {
+      margin-top: 72px;
+      &__left {
+        text-align: center;
+        &__create {
+          justify-content: center;
+          margin-top: 0;
         }
       }
     }
