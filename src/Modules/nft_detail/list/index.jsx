@@ -29,13 +29,13 @@ const List = ({ dataCollection }) => {
           </TextNormal>
           <TextNormal color="title_grey" marginBottom={10} marginTop={10}>
             {current_number_of_items} NFTs
-          </TextNormal>
+          </TextNormal >
           {/* <TextNormal color="title_grey" className="create__by">
             By
             <Avatar size={32} src="https://picsum.photos/200/300" />
             <TextNormal color="text_grey">bterwiliger</TextNormal>
           </TextNormal> */}
-        </div>
+        </div >
         <div className="list__content__right">
           {/* <TextNormal color="title_grey" className="create__by">
             By
@@ -43,8 +43,8 @@ const List = ({ dataCollection }) => {
             <TextNormal color="text_grey">bterwiliger</TextNormal>
           </TextNormal> */}
         </div>
-      </div>
-    </ListWrapper>
+      </div >
+    </ListWrapper >
   )
 }
 
