@@ -1,0 +1,1 @@
+export const GET_NFT_DETAIL = '@NFT_DETAIL/GET_NFT_DETAIL'

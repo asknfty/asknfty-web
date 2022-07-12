@@ -44,7 +44,7 @@ const CollectionDetailScreen = () => {
             logoUrl={logo_url}
             bannerUrl={banner_url}
             collectionName={collection_name}
-            collectionAddress={trimPublicAddress(collection_address, 3)}
+            collectionAddress={trimPublicAddress(collection_address, 5)}
             floor_price_wei_24_h={ethFormat(floor_price_wei_24_h)}
             totalItems={max_items}
             current_number_of_items={current_number_of_items}

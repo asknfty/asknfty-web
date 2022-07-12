@@ -41,7 +41,12 @@ import CRYPTO_CENTER_MOBILE from './images/crypto-center-mobile.png'
 import HERO_NFTY_MOBILE from './images/hero-nfty-mobile.png'
 import SUB_LOGIN from './images/sub-login.png'
 import AVATAR_DEFAULT from './images/avatar-default.png'
+
+
+// Image background screen
 import BG_WELCOME_MOBILE from './images/bg-welcome-mobile.png'
+import BG_NFT_DETAIL from './images/bg-nft-detail.png'
+
 // Image background button
 import BG_BUTTON_APPLY_UN_ACTIVE from './images/bg-btn-apply-unActive.png'
 import BG_BUTTON_APPLY_ACTIVE from './images/bg-btn-apply-active.png'
@@ -63,6 +68,7 @@ import ICON_HEART from './images/icon-heart.png'
 import ICON_HEART_OUTLINED from './images/icon-heart-outlined.png'
 // ICON ARROW
 import ICON_ARROW_DOWN from './images/arrow-down.png'
+import ICON_ARROW_LEFT from './icons/arrow_left.svg'
 import ICON_ARROW_UP_LONG from './images/arrow-up-long.png'
 import ICON_INCLUDE from './images/icon-include.png'
 import ICON_ON_EXCHANGE from './images/icon-on-exchange.png'
@@ -119,6 +125,7 @@ export {
     BG_BUTTON_APPLY_UN_ACTIVE,
     BG_BUTTON_RESET,
     ICON_ARROW_DOWN,
+    ICON_ARROW_LEFT,
     ICON_ARROW_UP_LONG,
     BUTTON_IMAGE,
     BTN_SEARCH_RED,
@@ -137,5 +144,6 @@ export {
     ICON_FLOOR_PRICE,
     ICON_ON_EXCHANGE,
     ICON_VOLUME_TRADED,
-    ICON_NFT_PRICE
+    ICON_NFT_PRICE,
+    BG_NFT_DETAIL
 }

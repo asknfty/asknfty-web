@@ -30,6 +30,7 @@ export const Colors = {
     bg_yellow_white: 'rgb(255, 255, 200)',
     bg_yellow_white_low: '#FFFBE6',
     bg_cyan_white: 'rgb(205, 236, 255)',
+    bg_pink_low: '#FFFAFA',
     // color for text
     text_primary: '#1A1A1A',
     text_secondary: '#838383',
@@ -41,6 +42,7 @@ export const Colors = {
     text_active_green: '#00C271',
     text_grey: '#4E4B4B',
     title_grey: '#837D7D',
+    text_blue: '#0F5DFA',
 
     // btn color
     primary_btn: '#00C271',
