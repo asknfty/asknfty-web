@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { MEDIA_WIDTHS } from 'Themes'
 
 export const ListWrapper = styled.div`
   padding: 40px 160px;
@@ -17,5 +18,8 @@ export const ListWrapper = styled.div`
         }
       }
     }
+  }
+  @media screen and (max-width: ${MEDIA_WIDTHS.upToMedium}px) {
+    padding: 24px 16px;
   }
 `

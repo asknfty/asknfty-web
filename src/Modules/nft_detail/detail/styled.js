@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { MEDIA_WIDTHS } from 'Themes'
 
 export const DetailWrapper = styled.div`
   padding: 40px 160px;
@@ -28,5 +29,8 @@ export const DetailWrapper = styled.div`
         }
       }
     }
+  }
+  @media screen and (max-width: ${MEDIA_WIDTHS.upToMedium}px) {
+    padding: 40px 16px;
   }
 `
