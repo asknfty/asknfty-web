@@ -10,6 +10,8 @@ export const abridgeNumber = (number = 0) => {
 }
 
 export const ethFormat = (number) => {
-  if (number === 0 || number === '0') return 0
-  return (number / Math.pow(10, 18)).toFixed(1)
+  if (number === '0') {
+    return 0
+  }
+  return Number(number) / Math.pow(10, 18)
 }

@@ -7,7 +7,7 @@ export const WrapperCenter = styled.div`
 `
 
 export const BoxWrapper = styled.div`
-  border: 1px solid ${({ theme }) => theme.bd_grey_dark};
+  /* border: 1px solid ${({ theme }) => theme.bd_grey_dark}; */
   background: ${({ theme }) => theme.white};
   width: 100%;
   height: 100%;

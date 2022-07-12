@@ -74,7 +74,7 @@ export const Right = styled.div`
     position: relative;
     .partner-link {
         position: relative;
-        &:after {
+        /* &:after {
             position: absolute;
             content:'';
             width: 2px;
@@ -83,7 +83,7 @@ export const Right = styled.div`
             top: 50%;
             margin-left: 32px;
             transform: translateY(-50%);
-        }
+        } */
     }
     a {
         padding: 25px 32px;
@@ -111,7 +111,8 @@ export const Right = styled.div`
         align-items: flex-start;
         justify-content: flex-start;
         transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
-        transform: translateX(-100%); 
+        transform: translateX(-100%);
+        z-index: 1000;
         &.show {
             transform: translateX(0);
             transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);

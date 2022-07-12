@@ -20,8 +20,6 @@ const CollectionDetailScreen = () => {
     getDetailNftCollectionAction({ collectionId })
   }, [])
 
-  console.log('data', data)
-
   const {
     description,
     logo_url,
@@ -32,8 +30,11 @@ const CollectionDetailScreen = () => {
     max_items,
     current_number_of_items,
     volume_wei_24_h,
-    crypto_currency
+    crypto_currency,
+    token_price_estimation
   } = data
+
+  console.log('type', typeof floor_price_wei_24_h)
 
   return (
     <HomeLayout>
@@ -50,7 +51,10 @@ const CollectionDetailScreen = () => {
             volume_wei_24_h={ethFormat(volume_wei_24_h)}
             crypto_currency={crypto_currency === 'wei' && 'ETH'}
           />
-          <Description description={description} />
+          <Description
+            description={description}
+            token_price_estimation={token_price_estimation}
+          />
           <ListWrapper>
             <CollectionList />
           </ListWrapper>
