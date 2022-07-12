@@ -57,7 +57,7 @@ const CollectionList = () => {
             list && list.map((item, index) => (
               <Col span={12} xl={6} md={8} key={index}>
                 <Skeleton className="ske" active avatar title={false} loading={item?.loading}>
-                  <CardDetail id={item.id} url={item.image_url} order={item.token_id} name={item.token_name} />
+                  <CardDetail id={item.id} url={item.image_url} order={item.token_id} name={item.token_name ? item.token_name : `#${item.token_id}`} />
                 </Skeleton>
               </Col>
             ))
