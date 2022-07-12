@@ -104,6 +104,9 @@ export const MainInfoWrapper = styled.div`
           margin-top: 0;
         }
       }
+      &__right {
+        padding-right: 0;
+      }
     }
   }
 `

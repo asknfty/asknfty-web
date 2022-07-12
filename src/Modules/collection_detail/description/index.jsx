@@ -49,11 +49,11 @@ const marks = {
   }
 }
 
-const Description = ({ description }) => {
+const Description = ({ description, token_price_estimation }) => {
   return (
     <DesWrapper>
       <Row gutter={[40, 0]}>
-        <Col span={24} xl={12} className="description__item">
+        <Col span={24} xl={token_price_estimation ? 12 : 24} className="description__item">
           <BoxWrapper>
             <TextNormal fontWeight="fw_800" color="text_grey" className="description__item__title">
               Description
@@ -65,7 +65,7 @@ const Description = ({ description }) => {
             </div>
           </BoxWrapper>
         </Col>
-        <Col span={24} xl={12} className="description__item">
+        {token_price_estimation && <Col span={24} xl={12} className="description__item">
           <BoxWrapper>
             <TextNormal fontWeight="fw_800" color="text_grey" className="description__item__title">
               Price Estimate
@@ -77,7 +77,7 @@ const Description = ({ description }) => {
               <Slider marks={marks} defaultValue={59} disabled />
             </div>
           </BoxWrapper>
-        </Col>
+        </Col>}
       </Row>
     </DesWrapper>
   )

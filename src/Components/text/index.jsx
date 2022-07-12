@@ -12,6 +12,9 @@ const Wrapper = styled.p`
   line-height: ${({ lineHeight }) => lineHeight || '22px'};
   padding: 0;
   margin: 0;
+  margin-bottom: ${({ marginBottom }) => marginBottom ? `${marginBottom}px` : 0 };
+  margin-top: ${({ marginTop }) => marginTop ? `${marginTop}px` : 0 };
+  text-align: ${({ textAlign }) => textAlign && 'center'};
   @media screen and (max-width: ${MEDIA_WIDTHS.upToLarge}px) {
     font-size: ${({ fontSize }) => getFontSize(fontSize, MEDIA_WIDTHS.upToLarge) || '14px'};
   }
@@ -30,9 +33,18 @@ const CategoryWrapper = styled.span`
   margin: 0;
 `
 
-export const TextPrimary = forwardRef(({ fontSize = 'size_20', fontWeight = 'fw400', size, ...rest }, ref) => (
-  <Wrapper color="text_primary" fontSize={fontSize} size={size} fontWeight={fontWeight} {...rest} ref={ref} />
-))
+export const TextPrimary = forwardRef(
+  ({ fontSize = 'size_20', fontWeight = 'fw400', size, ...rest }, ref) => (
+    <Wrapper
+      color="text_primary"
+      fontSize={fontSize}
+      size={size}
+      fontWeight={fontWeight}
+      {...rest}
+      ref={ref}
+    />
+  )
+)
 
 export const TextSecondary = ({ fontSize = 'size_14', fontWeight = 'fw400', ...rest }) => (
   <Wrapper color="text_secondary" fontSize={fontSize} fontWeight={fontWeight} {...rest} />
@@ -44,8 +56,23 @@ export const TextNormal = ({
   color = 'text_primary',
   maxWidth = '100%',
   lineHeight,
+  marginTop = 0,
+  marginBottom = 0,
+  textAlign = false,
   ...rest
-}) => <Wrapper color={color} lineHeight={lineHeight} maxWidth={maxWidth} fontSize={fontSize} fontWeight={fontWeight} {...rest} />
+}) => (
+  <Wrapper
+    color={color}
+    lineHeight={lineHeight}
+    maxWidth={maxWidth}
+    fontSize={fontSize}
+    fontWeight={fontWeight}
+    textAlign={textAlign}
+    marginBottom={marginBottom}
+    marginTop={marginTop}
+    {...rest}
+  />
+)
 
 export const TextSocial = ({ fontSize = 'size_16', fontWeight = 'fw400', color = 'white', ...rest }) => (
   <Wrapper color={color} fontSize={fontSize} fontWeight={fontWeight} {...rest} />
