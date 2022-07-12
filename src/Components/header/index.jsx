@@ -25,7 +25,7 @@ const Header = () => {
                 <a className="link__page partner-link" target="_blank" href='https://forms.gle/hEnruK6yARuYrMZ26'>
                     Partner with Us
                 </a>
-                <Login authenticated={false} />
+                {/* <Login authenticated={false} /> */}
             </Right>
             <button className="hamburger-icon" onClick={(e) => setIsOpen(!isOpen)}>
                 <svg width="44" height="44" viewBox="0 0 100 100">
