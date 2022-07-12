@@ -1,11 +1,14 @@
-import { Avatar, Button, Skeleton } from 'antd'
+import { Avatar } from 'antd'
 import { IMAGE_BTN_NEXT, IMAGE_BTN_PREV, IMG_DEFAULT } from 'Assets'
 import { CardDetail, Image, TextNormal } from 'Components'
 import React, { useRef } from 'react'
 import { ListWrapper } from './styled'
 import Slider from 'react-slick'
+import { ROUTE_NAMES } from 'Routes/constant'
+import { useHistory } from 'react-router-dom'
 
-const List = ({ dataCollection, dataNftAll }) => {
+const List = ({ dataCollection, dataNftAll, collectionId }) => {
+  const history = useHistory()
   const settings = {
     dots: false,
     arrow: false,
@@ -25,6 +28,10 @@ const List = ({ dataCollection, dataNftAll }) => {
     else sliderRef.current.slickPrev()
   }
 
+  const goToCollectionDetail = () => {
+    history.push(ROUTE_NAMES.COLLECTION_DETAIL(collectionId))
+  }
+
   return (
     <ListWrapper>
       <TextNormal fontWeight="fw_700" fontSize="size_32" color="text_grey">
@@ -32,7 +39,7 @@ const List = ({ dataCollection, dataNftAll }) => {
       </TextNormal>
       <div className="list__content">
         <div className="list__content__left">
-          <div className="list__content__left--avatar">
+          <div className="list__content__left--avatar"  onClick={goToCollectionDetail}>
             <Avatar size={160} src={logo_url || IMG_DEFAULT} />
           </div>
           <TextNormal fontWeight="fw_700" fontSize="size_32" color="text_grey">

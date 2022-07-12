@@ -1,7 +1,6 @@
 import { Col, Row } from 'antd'
 import { TextNormal } from 'Components'
 import React from 'react'
-import { useHistory } from 'react-router-dom'
 import { trimPublicAddress } from 'Utils'
 import { DetailWrapper } from './styled'
 
