@@ -105,7 +105,15 @@ export const MainInfoWrapper = styled.div`
         }
       }
       &__right {
-        padding-right: 0;
+        padding-right: 16px;
+        padding-left: 16px;
+        justify-content: space-between;
+        &__item {
+          min-width: 132px;
+          img {
+            width: 40px;
+          }
+        }
       }
     }
   }
