@@ -15,7 +15,7 @@ const List = ({ dataCollection, dataNftAll, collectionId }) => {
     infinite: true,
     speed: 300,
     slidesToShow: 4,
-    slidesToScroll: 3,
+    slidesToScroll: 3
   }
 
   const sliderRef = useRef()
@@ -57,8 +57,15 @@ const List = ({ dataCollection, dataNftAll, collectionId }) => {
         </div >
         <div className="list__content__right">
           <Slider {...settings} ref={sliderRef}>
-            {(records || []).map((item, index) => (
-              <CardDetail className="card-detail" url={item.image_url} id={item.id} key={index} order={item.token_id} name={item.token_name} />
+            {(records || [...new Array(8)]).map((item, index) => (
+              <CardDetail
+                key={index}
+                className="card-detail"
+                url={item?.image_url}
+                id={item?.id}
+                order={item?.token_id}
+                name={item?.token_name}
+              />
             ))}
           </Slider>
           <div className="btn__group">

@@ -10,8 +10,10 @@ export const ListWrapper = styled.div`
     width: 100%;
     &__left {
       margin-right: 52px;
+      padding: 5px 0;
       &--avatar {
         margin-bottom: 20px;
+        cursor: pointer;
       }
       .create__by {
         display: flex;
@@ -25,7 +27,9 @@ export const ListWrapper = styled.div`
       overflow-x: hidden;
       .slick-list {
         margin-left: -24px;
+        padding: 5px 10px;
         .slick-slide {
+          height: auto;
           > * {
             margin-left: 24px;
           }

@@ -10,6 +10,7 @@ import List from './list'
 const NFTDetailScreen = () =>
 {
   const { nftId } = useParams()
+  console.log('Boy 🚀 ~ file: index.jsx ~ line 12 ~ NFTDetailScreen ~ nftId', nftId)
 
   const { data, getNftDetailAction } = useGetNftDetail()
   const { data: dataNftAll, getNftAllItemAction } = useGetNftAllItem()
