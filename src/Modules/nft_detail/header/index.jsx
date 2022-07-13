@@ -5,7 +5,6 @@ import { useHistory } from 'react-router-dom'
 import { HeaderWrapper } from './styled'
 
 const Header = ({ data }) => {
-  console.log('Boy ~ file: index.jsx ~ line 7 ~ Header ~ data', data)
   const history = useHistory()
   const goBack = () => {
     history.goBack()

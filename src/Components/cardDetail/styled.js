@@ -22,7 +22,7 @@ export const Wrapper = styled.div`
             padding: 16px;
             .card-img {
                 background-repeat: no-repeat;
-                background-size: contain;
+                background-size: cover;
                 height: max-content;
                 overflow: hidden;
                 margin-bottom: 4px;
@@ -59,9 +59,12 @@ export const Wrapper = styled.div`
                 }
             }
             .card-img-default {
-                height: 224px;
+                height: 205px;
                 @media screen and (max-width: ${MEDIA_WIDTHS.upToMedium}px){
-                    height: 113px;
+                    height: 120px !important;
+                }
+                @media screen and (max-width: ${MEDIA_WIDTHS.upToLarge}px) {
+                    height: 222px;
                 }
             }
             .card-price {

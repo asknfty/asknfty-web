@@ -22,6 +22,7 @@ export const ImageWrapper = styled.div`
 
 export const MainInfoWrapper = styled.div`
   padding-left: 32px;
+  padding-bottom: 24px;
 
   .main__alert {
     width: 100%;
@@ -74,21 +75,20 @@ export const MainInfoWrapper = styled.div`
       display: flex;
       flex-wrap: wrap;
       padding-right: 80px;
+      row-gap: 24px;
+      column-gap: 42px;
       &__item {
-        width: 50%;
         display: flex;
-        margin-bottom: 24px;
-        justify-content: center;
+        min-width: 189px;
+        
         .icon {
           display: flex;
           justify-content: center;
           align-items: center;
-          margin-right: 12px;
+          
         }
         .data {
-          display: flex;
-          flex-direction: column;
-          gap: 4px;
+          margin-left: 12px;
         }
       }
     }

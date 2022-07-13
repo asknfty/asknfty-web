@@ -25,6 +25,8 @@ const MainInfo = ({
   floor_price_wei_24_h,
   volume_wei_24_h
 }) => {
+  const swapCurrent = (current_number_of_items > totalItems) ? totalItems : current_number_of_items
+  const swapTotal = (current_number_of_items > totalItems) ? current_number_of_items : totalItems
   return (
     <BoxWrapper>
       <ImageWrapper>
@@ -56,10 +58,10 @@ const MainInfo = ({
               </div>
               <div className="data">
                 <TextNormal color="title_grey" fontSize="size_16">
-                  Total Items
+                  Max Total Supply
                 </TextNormal>
                 <TextNormal color="text_primary" fontWeight="fw_700">
-                  {totalItems} items
+                  {swapTotal} items
                 </TextNormal>
               </div>
             </div>
@@ -72,7 +74,7 @@ const MainInfo = ({
                   Total Supply
                 </TextNormal>
                 <TextNormal color="text_primary" fontWeight="fw_700">
-                  {current_number_of_items} items
+                  {swapCurrent} items
                 </TextNormal>
               </div>
             </div>
