@@ -13,10 +13,9 @@ export const DetailWrapper = styled.div`
         display: flex;
         align-items: center;
         margin: 10px 0 18px 0;
-        p {
-          &:first-child {
-            margin-right: 19px;
-          }
+        span {
+          margin-right: 19px;
+          color: ${({ theme }) => theme.text_blue};
         }
       }
       &--content {
