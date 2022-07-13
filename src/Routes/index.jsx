@@ -1,7 +1,7 @@
 import { PublicRoute, CustomRoute } from '../Components'
-import React, { Suspense, lazy } from 'react'
+import React, { Suspense, lazy, useEffect } from 'react'
 import { useDispatch } from 'react-redux'
-import { Switch, Route, Redirect } from 'react-router-dom'
+import { Switch, Route, Redirect, useLocation } from 'react-router-dom'
 
 import { useInjectReducer } from 'Stores'
 import { checkNetwork } from './store/actions'
@@ -16,6 +16,12 @@ const CollectionDetailScreen = lazy(() => import('Modules/collection_detail'))
 const NFTDetailScreen = lazy(() => import('Modules/nft_detail'))
 
 export default function AppRoutes({ isOnline = true }) {
+  const { pathname } = useLocation()
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [pathname])
+
   return (
     <Suspense fallback={<LoadingScreen />}>
       <Switch>

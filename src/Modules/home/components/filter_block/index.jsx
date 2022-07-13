@@ -1,19 +1,10 @@
-import { BTN_SEARCH_RED, BTN_X, BUTTON_IMAGE } from 'Assets'
-import { CheckboxGroup, FormInput } from 'Components'
-import { NFT_OPTIONS } from 'Constants'
-import React, { useState, useCallback, memo } from 'react'
+import { BTN_SEARCH_RED, BTN_X } from 'Assets'
+import { FormInput, Image } from 'Components'
+import React, { useCallback, memo } from 'react'
 import { FormProvider, useForm } from 'react-hook-form'
-import { SearchOutlined } from '@ant-design/icons'
-import { parseParamsCollectionToQueryString } from 'Utils'
 import { FilterBlockSchema } from './schema'
-import { CheckBoxWrapper } from './styled'
 import { yupResolver } from '@hookform/resolvers/yup'
-import { Filter, Sort } from './components'
 import { useGetNftAllCollection } from 'Hooks'
-
-const DEFAULT_VALUE = {
-  queries: '',
-}
 
 const FilterBlock = () => {
   const { getNftAllCollectionAction, deleteNftAllCollectionAction } = useGetNftAllCollection()
@@ -38,8 +29,6 @@ const FilterBlock = () => {
     getNftAllCollectionAction({ params: { page: 0, pageSize: 10, queries: formData.queries } })
   }, [])
 
-  console.log('rerender')
-
   return (
     <FormProvider {...form}>
       <form onSubmit={handleSubmit(onSubmit)}>
@@ -48,8 +37,8 @@ const FilterBlock = () => {
           placeholder="Search by keyword..."
           suffix={
             <>
-              {queries && queries.length > 0 && <img onClick={handleReset} src={BTN_X} alt="icon-search" />}
-              <img onClick={handleSubmit(onSubmit)} src={BTN_SEARCH_RED} alt="icon-search" />
+              {queries && queries.length > 0 && <Image allowClick onClick={handleReset} src={BTN_X} alt="icon-reset" />}
+              <Image allowClick onClick={handleSubmit(onSubmit)} src={BTN_SEARCH_RED} alt="icon-search" />
             </>
           }
         />

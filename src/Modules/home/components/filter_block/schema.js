@@ -6,4 +6,5 @@ export const FilterBlockSchema = () =>
       .string()
       .trim()
       .required('Please type something')
+      .nullable()
   })
