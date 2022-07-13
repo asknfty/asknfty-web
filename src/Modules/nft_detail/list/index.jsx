@@ -12,7 +12,7 @@ const List = ({ dataCollection, dataNftAll, goToCollectionDetail }) => {
     infinite: true,
     speed: 300,
     slidesToShow: 4,
-    slidesToScroll: 3
+    slidesToScroll: 3,
   }
 
   const sliderRef = useRef()
