@@ -23,6 +23,14 @@ export const ListWrapper = styled.div`
     }
     &__right {
       overflow-x: hidden;
+      .slick-list {
+        margin-left: -24px;
+        .slick-slide {
+          > * {
+            margin-left: 24px;
+          }
+        }
+      }
       .btn__group {
         margin-top: 30px;
         .ant-image {

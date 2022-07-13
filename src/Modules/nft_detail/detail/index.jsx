@@ -5,7 +5,8 @@ import { useHistory } from 'react-router-dom'
 import { trimPublicAddress } from 'Utils'
 import { DetailWrapper } from './styled'
 
-const Detail = ({ data, dataCollection }) => {
+const Detail = ({ data, dataCollection }) =>
+{
   const {
     token_id,
     collection_address,
@@ -14,7 +15,7 @@ const Detail = ({ data, dataCollection }) => {
     chain
   } = data
 
-  const { collection_name, current_number_of_items } = dataCollection
+  const { collection_name, current_number_of_items, max_items } = dataCollection
 
   return (
     <DetailWrapper>
