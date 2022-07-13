@@ -52,7 +52,7 @@ const marks = {
 const Description = ({ description, token_price_estimation }) => {
   return (
     <DesWrapper>
-      <Row gutter={[40, 0]}>
+      <Row gutter={[token_price_estimation && 40, 0]}>
         <Col span={24} xl={token_price_estimation ? 12 : 24} className="description__item">
           <BoxWrapper>
             <TextNormal fontWeight="fw_800" color="text_grey" className="description__item__title">

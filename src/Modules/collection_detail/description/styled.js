@@ -5,9 +5,11 @@ export const DesWrapper = styled.div`
   display: flex;
   gap: 40px;
   margin: 43px 0 40px 0;
+  .ant-row {
+    width: 100%;
+  }
 
   .description__item {
-    width: 50%;
     &__title {
       background: ${({ theme }) => theme.bg_green_dark};
       padding: 10px 16px;
