@@ -5,14 +5,14 @@ import { IMG_DEFAULT } from 'Assets'
 import PropTypes from 'prop-types'
 import { useHistory } from 'react-router-dom'
 
-const CardDetail = ({ url, favorites, order, name, price, id }) => {
+const CardDetail = ({ url, favorites, order, name, price, id, ...rest }) => {
   const history = useHistory()
 
   const goToDetail = () => {
     history.push(`/nft-detail/${id}`)
   }
   return (
-    <Wrapper>
+    <Wrapper {...rest}>
       <div className="wrap-content">
         <a onClick={goToDetail}>
           <div className="card">
