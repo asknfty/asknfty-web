@@ -1,6 +1,6 @@
 import { PublicRoute, CustomRoute } from '../Components'
-import React, { Suspense, lazy } from 'react'
-import { Switch } from 'react-router-dom'
+import React, { Suspense, lazy, useEffect } from 'react'
+import { Switch, useLocation } from 'react-router-dom'
 
 import LoadingScreen from 'Modules/loading'
 import { ROUTE_NAMES } from './constant'
@@ -12,6 +12,12 @@ const CollectionDetailScreen = lazy(() => import('Modules/collection_detail'))
 const NFTDetailScreen = lazy(() => import('Modules/nft_detail'))
 
 export default function AppRoutes() {
+  const { pathname } = useLocation()
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [pathname])
+
   return (
     <Suspense fallback={<LoadingScreen />}>
       <Switch>

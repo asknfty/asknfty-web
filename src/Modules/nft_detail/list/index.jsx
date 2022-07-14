@@ -4,11 +4,8 @@ import { CardDetail, Image, TextNormal } from 'Components'
 import React, { useRef } from 'react'
 import { ListWrapper } from './styled'
 import Slider from 'react-slick'
-import { ROUTE_NAMES } from 'Routes/constant'
-import { useHistory } from 'react-router-dom'
 
-const List = ({ dataCollection, dataNftAll, collectionId }) => {
-  const history = useHistory()
+const List = ({ dataCollection, dataNftAll, goToCollectionDetail }) => {
   const settings = {
     dots: false,
     arrow: false,
@@ -26,10 +23,6 @@ const List = ({ dataCollection, dataNftAll, collectionId }) => {
   const onChangeSlide = (action) => {
     if (action === 'NEXT') sliderRef.current.slickNext()
     else sliderRef.current.slickPrev()
-  }
-
-  const goToCollectionDetail = () => {
-    history.push(ROUTE_NAMES.COLLECTION_DETAIL(collectionId))
   }
 
   return (

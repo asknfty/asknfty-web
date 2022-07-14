@@ -28,11 +28,25 @@ export const DetailWrapper = styled.div`
         }
       }
     }
+    &__right {
+      width: 50%;
+      &--title {
+        display: flex;
+        align-items: center;
+        margin: 10px 0 18px 0;
+      }
+      &--content {
+        .item {
+          display: flex;
+          p {
+            margin-bottom: 12px;
+            width: 50%;
+          }
+        }
+      }
+    }
   }
-<<<<<<< HEAD
   @media screen and (max-width: ${MEDIA_WIDTHS.upToMedium}px) {
     padding: 40px 16px;
   }
-=======
->>>>>>> 7da7a32 (Implement NFT-Detail)
 `

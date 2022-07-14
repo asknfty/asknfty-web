@@ -34,44 +34,39 @@ const Detail = ({ data, dataCollection }) =>
               <TextNormal color="title_grey">Contract Address</TextNormal>
               <TextNormal color="title_grey">Token ID</TextNormal>
               <TextNormal color="title_grey">Token Standard</TextNormal>
-              <TextNormal color="title_grey">Contract Creation Height</TextNormal>
+              {/* Sprint 2: Hide because no have value */}
+              {/* <TextNormal color="title_grey">Contract Creation Height</TextNormal> */}
               <TextNormal color="title_grey">Blockchain</TextNormal>
             </div>
             <div className="item">
               <TextNormal color="text_blue">{trimPublicAddress(collection_address, 5)}</TextNormal>
               <TextNormal color="text_grey">{token_id}</TextNormal>
               <TextNormal color="text_grey">ERC721</TextNormal>
-              <TextNormal color="text_grey">12,287,507</TextNormal>
+              {/* Sprint 2: Hide because no have value */}
+              {/* <TextNormal color="text_grey">12,287,507</TextNormal> */}
               <TextNormal color="text_grey">{chain} Mainnet</TextNormal>
             </div>
           </div>
         </Col>
-        <Col span={24} xl={12} className="detail__content__left">
+        {(data.token_trait && data.token_trait.traits) && <Col span={24} xl={12} className="detail__content__right">
           <TextNormal
-            className="detail__content__left--title"
+            className="detail__content__right--title"
             color="text_grey"
             fontSize="size_24"
             fontWeight="fw_700"
           >
             Attributes
           </TextNormal>
-          <div className="detail__content__left--content">
-            <div className="item">
-              <TextNormal color="title_grey">Background</TextNormal>
-              <TextNormal color="title_grey">Eyes</TextNormal>
-              <TextNormal color="title_grey">Mouth</TextNormal>
-              <TextNormal color="title_grey">Clothes</TextNormal>
-              <TextNormal color="title_grey">Fur</TextNormal>
-            </div>
-            <div className="item">
-              <TextNormal color="text_blue">Purple</TextNormal>
-              <TextNormal color="text_blue">Bored</TextNormal>
-              <TextNormal color="text_blue">Tongue Out</TextNormal>
-              <TextNormal color="text_blue">Bone Necklace</TextNormal>
-              <TextNormal color="text_blue">Cheetah</TextNormal>
-            </div>
+          <div className="detail__content__right--content">
+            {data.token_trait.traits.map((item, index) => (
+              <div className="item" key={index}>
+                <TextNormal color="title_grey">{item.trait_type}</TextNormal>
+                <TextNormal color="text_blue">{item.trait_value.str_val}</TextNormal>
+              </div>
+            ))}
+
           </div>
-        </Col>
+        </Col>}
       </Row>
     </DetailWrapper>
   )
