@@ -24,6 +24,12 @@ export const HeaderWrapper = styled.div`
     margin-bottom: 24px;
     &__img {
       border: 4px solid white;
+      max-width: 480px;
+      height: 480px;
+      @media screen and (max-width: ${MEDIA_WIDTHS.upToExtraSmall}px) {
+        max-width: 328px;
+        height: 328px;
+      }
     }
   }
 

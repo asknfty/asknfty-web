@@ -38,8 +38,6 @@ const FilterBlock = () => {
     getNftAllCollectionAction({ params: { page: 0, pageSize: 10, queries: formData.queries } })
   }, [])
 
-  console.log('rerender')
-
   return (
     <FormProvider {...form}>
       <form onSubmit={handleSubmit(onSubmit)}>

@@ -7,7 +7,7 @@ const makeNftCollection = () => (
     createSelector(selectNft, (state) => state.nftAllCollection)
 )
 
-const makeNftItem = () => (
+const makeNftAllItem = () => (
     createSelector(selectNft, (state) => state.nftAllItem)
 )
 
@@ -19,4 +19,4 @@ const makeNftCollectionDetail = () => (
     createSelector(selectNft, (state) => state.nftCollectionDetail)
 )
 
-export { selectNft, makeNftItem, makeNftCollection, makeNftItemDetail, makeNftCollectionDetail }
+export { selectNft, makeNftAllItem, makeNftCollection, makeNftItemDetail, makeNftCollectionDetail }

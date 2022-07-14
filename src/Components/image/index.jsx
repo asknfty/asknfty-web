@@ -7,6 +7,9 @@ import styled from 'styled-components'
 const ImageStyled = styled(Image)`
   display: flex;
   align-items: center;
+  .ant-image-img {
+    object-fit: cover;
+  }
 `
 
 const Img = ({ src, ...rest }) => (

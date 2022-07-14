@@ -61,7 +61,7 @@ const MainInfo = ({
                   Max Total Supply
                 </TextNormal>
                 <TextNormal color="text_primary" fontWeight="fw_700">
-                  {swapTotal} items
+                  {swapTotal || '-'} items
                 </TextNormal>
               </div>
             </div>
@@ -74,7 +74,7 @@ const MainInfo = ({
                   Total Supply
                 </TextNormal>
                 <TextNormal color="text_primary" fontWeight="fw_700">
-                  {swapCurrent} items
+                  {swapCurrent || '-'} items
                 </TextNormal>
               </div>
             </div>
@@ -87,7 +87,7 @@ const MainInfo = ({
                   Floor Price
                 </TextNormal>
                 <TextNormal color="text_primary" fontWeight="fw_700">
-                  {floor_price_wei_24_h} {crypto_currency}
+                  {floor_price_wei_24_h || '-'} {crypto_currency}
                 </TextNormal>
               </div>
             </div>
@@ -100,7 +100,7 @@ const MainInfo = ({
                   Volume Traded
                 </TextNormal>
                 <TextNormal color="text_primary" fontWeight="fw_700">
-                  {volume_wei_24_h} {crypto_currency}
+                  {volume_wei_24_h ? parseFloat(volume_wei_24_h).toFixed(4) : '-'} {crypto_currency}
                 </TextNormal>
               </div>
             </div>

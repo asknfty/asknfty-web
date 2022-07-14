@@ -11,7 +11,7 @@ const Header = ({ data, goToCollectionDetail }) => {
         <TextNormal fontWeight="fw_800">Back to collection</TextNormal>
       </div>
       <div className="header__avatar">
-        <Image width={480} height={480} className="header__avatar__img" src={data.url || IMG_DEFAULT} />
+        <Image className="header__avatar__img" src={data.url || IMG_DEFAULT} />
       </div>
       {/* <TextNormal fontWeight="fw_800" textAlign fontSize="size_28">
         Price Estimate: 22.43 ETH

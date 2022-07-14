@@ -33,8 +33,8 @@ const Detail = ({ data, dataCollection }) =>
             <div className="item">
               <TextNormal color="title_grey">Contract Address</TextNormal>
               <TextNormal color="title_grey">Token ID</TextNormal>
-              <TextNormal color="title_grey">Token Standard</TextNormal>
               {/* Sprint 2: Hide because no have value */}
+              {/* <TextNormal color="title_grey">Token Standard</TextNormal> */}
               {/* <TextNormal color="title_grey">Contract Creation Height</TextNormal> */}
               <TextNormal color="title_grey">Blockchain</TextNormal>
             </div>

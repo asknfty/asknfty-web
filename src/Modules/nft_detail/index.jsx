@@ -12,15 +12,14 @@ const NFTDetailScreen = () =>
 {
   const history = useHistory()
   const { nftId } = useParams()
-  console.log('Boy 🚀 ~ file: index.jsx ~ line 12 ~ NFTDetailScreen ~ nftId', nftId)
 
   const { data, getNftDetailAction } = useGetNftDetail()
-  const { data: dataNftAll, getNftAllItemAction } = useGetNftAllItem()
+  const { data: dataNftAll, getNftAllItemAction, isLoading: isLoadingNftAll } = useGetNftAllItem()
   const { data: dataCollection, getDetailNftCollectionAction } = useGetDetailNftCollection()
 
   useEffect(() => {
     getNftDetailAction({ nftId })
-  }, [])
+  }, [nftId])
 
   const collectionId = useMemo(() => data.collection ? data.collection.id : '', [data])
 
@@ -39,7 +38,12 @@ const NFTDetailScreen = () =>
     <HomeLayout>
       <Header data={data} goToCollectionDetail={goToCollectionDetail} />
       <Detail data={data} dataCollection={dataCollection} />
-      <List dataCollection={dataCollection} dataNftAll={dataNftAll} goToCollectionDetail={goToCollectionDetail} />
+      <List 
+        dataCollection={dataCollection}
+        dataNftAll={dataNftAll}
+        goToCollectionDetail={goToCollectionDetail}
+        isLoadingNftAll={isLoadingNftAll}
+      />
     </HomeLayout>
   )
 }
