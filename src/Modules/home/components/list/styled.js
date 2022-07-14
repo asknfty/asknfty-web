@@ -31,6 +31,9 @@ export const Wrapper = styled.div`
             height: 132px;
         }
     }
+    .load__more {
+        margin-top: 40px;
+    }
     .not-found {
         margin: 0 auto;
         text-align: center;
