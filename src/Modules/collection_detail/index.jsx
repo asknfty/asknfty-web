@@ -6,12 +6,10 @@ import Description from './description'
 import MainInfo from './main_info'
 import { Wrapper, ListWrapper } from './styled'
 import { useParams } from 'react-router-dom'
-import { useGetDetailNftCollection, getNftAllItemAction } from 'Hooks'
+import { useGetDetailNftCollection } from 'Hooks'
 import { useEffect } from 'react'
 import { trimPublicAddress, ethFormat } from 'Utils'
 import { Container } from 'Components'
-
-const { TabPane } = Tabs
 
 const CollectionDetailScreen = () => {
   let { collectionId } = useParams()
@@ -33,8 +31,6 @@ const CollectionDetailScreen = () => {
     crypto_currency,
     token_price_estimation
   } = data
-
-  console.log('type', typeof floor_price_wei_24_h)
 
   return (
     <HomeLayout>

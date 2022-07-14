@@ -75,6 +75,7 @@ import ICON_ON_EXCHANGE from './images/icon-on-exchange.png'
 import ICON_FLOOR_PRICE from './images/icon-floor-price.png'
 import ICON_VOLUME_TRADED from './images/icon-volume-traded.png'
 import ICON_NFT_PRICE from './images/icon-nft-price.png'
+import ICON_LOAD_MORE from './images/icon-load-more.png'
 
 // IMAGE ICON
 import IMAGE_BTN_PREV from './images/img-btn-prev.png'
@@ -152,5 +153,6 @@ export
     ICON_NFT_PRICE,
     BG_NFT_DETAIL,
     IMAGE_BTN_PREV,
-    IMAGE_BTN_NEXT
+    IMAGE_BTN_NEXT,
+    ICON_LOAD_MORE
 }

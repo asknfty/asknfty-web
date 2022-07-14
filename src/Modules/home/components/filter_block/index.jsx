@@ -35,7 +35,7 @@ const FilterBlock = () => {
   }, [])
 
   const onSubmit = useCallback((formData) => {
-    getNftAllCollectionAction({ params: { page: 0, pageSize: 10, queries: formData.queries } })
+    getNftAllCollectionAction({ params: { page: 0, pageSize: 12, queries: formData.queries } })
   }, [])
 
   return (

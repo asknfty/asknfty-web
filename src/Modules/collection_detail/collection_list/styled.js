@@ -39,7 +39,7 @@ export const Wrapper = styled.div`
             margin-bottom: 24px;
         }
     }
-    .btn-image {
-        text-align: center;
+    .load__more {
+        margin-top: 24px;
     }
 `

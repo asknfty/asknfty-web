@@ -4,7 +4,7 @@ import { DELETE_NFT_ALL_COLLECTION, GET_DETAILS_NFT_COLLECTION, GET_DETAILS_NFT_
 
 const nftAllCollection = {
     isLoading: false,
-    data: [],
+    data: {},
     pagination: {},
     filter: {},
     error: null,
