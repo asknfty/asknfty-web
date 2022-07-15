@@ -23,8 +23,8 @@ const MainInfo = ({
   floor_price_wei_24_h,
   volume_wei_24_h
 }) => {
-  const swapCurrent = (current_number_of_items > totalItems) ? totalItems : current_number_of_items
-  const swapTotal = (current_number_of_items > totalItems) ? current_number_of_items : totalItems
+  const swapTotalItems = (+current_number_of_items > +totalItems) ? current_number_of_items : totalItems
+
   return (
     <BoxWrapper>
       <ImageWrapper>
@@ -59,7 +59,7 @@ const MainInfo = ({
                   Max Total Supply
                 </TextNormal>
                 <TextNormal color="text_primary" fontWeight="fw_700">
-                  {swapTotal || 0} items
+                  {swapTotalItems || 0} items
                 </TextNormal>
               </div>
             </div>
@@ -72,7 +72,7 @@ const MainInfo = ({
                   Total Supply
                 </TextNormal>
                 <TextNormal color="text_primary" fontWeight="fw_700">
-                  {swapCurrent || 0} items
+                  {current_number_of_items || 0} items
                 </TextNormal>
               </div>
             </div>
