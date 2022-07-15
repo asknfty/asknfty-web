@@ -10,8 +10,6 @@ export const abridgeNumber = (number = 0) => {
 }
 
 export const ethFormat = (number) => {
-  if (number === '0') {
-    return 0
-  }
-  return Number(number) / Math.pow(10, 18)
+  if (number === '0' || isNaN(number)) return 0
+  return Math.round(Number(number) / Math.pow(10, 18))
 }

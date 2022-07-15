@@ -32,6 +32,12 @@ export const ListWrapper = styled.div`
           height: auto;
           > * {
             margin-left: 24px;
+            @media screen and (max-width: ${MEDIA_WIDTHS.upToMedium}px) {
+              margin-left: 20px;
+            }
+            @media screen and (max-width: ${MEDIA_WIDTHS.upToSmall}px) {
+              margin-left: 14px;
+            }
           }
         }
       }

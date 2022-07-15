@@ -20,7 +20,7 @@ const NFTDetailScreen = () =>
 
   useEffect(() => {
     getNftDetailAction({ nftId })
-  }, [])
+  }, [nftId])
 
   const collectionId = useMemo(() => data.collection ? data.collection.id : '', [data])
 

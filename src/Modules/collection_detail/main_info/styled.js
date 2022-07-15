@@ -12,7 +12,7 @@ export const ImageWrapper = styled.div`
     background-position: center center;
     background-repeat: no-repeat;
   }
-  @media screen and (max-width: ${MEDIA_WIDTHS.upToMedium}px) {
+  @media screen and (max-width: ${MEDIA_WIDTHS.upToLarge}px) {
     .avatar {
       left: 50%;
       transform: translateX(-50%);
@@ -93,7 +93,7 @@ export const MainInfoWrapper = styled.div`
       }
     }
   }
-  @media screen and (max-width: ${MEDIA_WIDTHS.upToMedium}px) {
+  @media screen and (max-width: ${MEDIA_WIDTHS.upToLarge}px) {
     padding-left: unset;
     .main__content {
       margin-top: 72px;

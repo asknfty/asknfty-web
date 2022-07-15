@@ -7,7 +7,6 @@ import { useGetNftAllCollection, useInfiniteScroll } from 'Hooks'
 import React, { useState, useEffect } from 'react'
 import { Wrapper } from './styled'
 
-
 const ListNFT = () => {
   const [list, setList] = useState([])
   const [pageLoadMore, setPageLoadMore] = useState(0)
@@ -53,14 +52,13 @@ const ListNFT = () => {
         <Row gutter={[24, 40]}>
           {(list || []).map((item, index) => (
             <Col span={12} xl={6} md={8} key={index}>
-              <Skeleton className="ske" active avatar title={false} loading={item?.loading}>
-                <CardSearch
-                  id={item?.id}
-                  url={item?.logo_url || item?.banner_url}
-                  name={item?.collection_name}
-                  title={item?.description}
-                />
-              </Skeleton>
+              <CardSearch
+                id={item?.id}
+                url={item?.logo_url || item?.banner_url}
+                name={item?.collection_name}
+                title={item?.description}
+                loading={item.loading}
+              />
             </Col>
           ))}
           {total === 0 && (
@@ -72,9 +70,7 @@ const ListNFT = () => {
             </div>
           )}
         </Row>
-        {allowLoadMore && (
-          <Image src={ICON_LOAD_MORE} alt="load-more" className="load__more" />
-        )}
+        {allowLoadMore && <Image src={ICON_LOAD_MORE} alt="load-more" className="load__more" />}
       </Wrapper>
     </Spin>
   )

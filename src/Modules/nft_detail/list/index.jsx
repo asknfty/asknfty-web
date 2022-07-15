@@ -47,7 +47,7 @@ const List = ({ dataCollection, dataNftAll, goToCollectionDetail }) => {
             <Avatar size={32} src="https://picsum.photos/200/300" />
             <TextNormal color="text_grey">bterwiliger</TextNormal>
           </TextNormal> */}
-        </div >
+        </div>
         <div className="list__content__right">
           <Slider {...settings} ref={sliderRef}>
             {(records || [...new Array(8)]).map((item, index) => (
@@ -58,6 +58,7 @@ const List = ({ dataCollection, dataNftAll, goToCollectionDetail }) => {
                 id={item?.id}
                 order={item?.token_id}
                 name={item?.token_name}
+                loading={!records?.length}
               />
             ))}
           </Slider>
@@ -66,8 +67,8 @@ const List = ({ dataCollection, dataNftAll, goToCollectionDetail }) => {
             <Image onClick={() => onChangeSlide('NEXT')} src={IMAGE_BTN_NEXT} />
           </div>
         </div>
-      </div >
-    </ListWrapper >
+      </div>
+    </ListWrapper>
   )
 }
 
