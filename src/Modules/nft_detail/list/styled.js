@@ -46,36 +46,12 @@ export const ListWrapper = styled.div`
           height: auto;
           > * {
             margin-left: 24px;
-          }
-          .ske {
-            background: white;
-            display: flex !important;
-            flex-direction: column !important;
-            border-radius: 4px;
-            padding: 20px 0;
-            max-width: 256px;
             @media screen and (max-width: ${MEDIA_WIDTHS.upToMedium}px) {
-              max-width: 132px;
-              margin: 0 auto;
+              margin-left: 20px;
             }
-          }
-          .ant-skeleton-header {
-            padding-right: unset;
-            text-align: center;
-          }
-          .ant-skeleton-avatar {
-            border-radius: unset !important;
-            max-width: 256px;
-            width: 100%;
-            height: 222px;
-            @media screen and (max-width: ${MEDIA_WIDTHS.upToMedium}px) {
-              max-width: 132px;
-              height: 120px;
+            @media screen and (max-width: ${MEDIA_WIDTHS.upToSmall}px) {
+              margin-left: 14px;
             }
-          }
-          .ant-skeleton-paragraph {
-            padding-right: 16px;
-            padding-left: 16px;
           }
         }
       }

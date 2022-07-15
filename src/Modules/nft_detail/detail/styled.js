@@ -19,12 +19,13 @@ export const DetailWrapper = styled.div`
         }
       }
       &--content {
-        display: flex;
-        p {
-          margin-bottom: 12px;
-        }
         .item {
-          width: 50%;
+          display: flex;
+          p {
+            margin-bottom: 12px;
+            width: 50%;
+            word-break: break-word;
+          }
         }
       }
     }

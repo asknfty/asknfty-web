@@ -5,9 +5,7 @@ import React, { useRef } from 'react'
 import { ListWrapper } from './styled'
 import Slider from 'react-slick'
 
-const List = ({ dataCollection, dataNftAll, goToCollectionDetail }) =>
-{
-
+const List = ({ dataCollection, dataNftAll, goToCollectionDetail }) => {
   const settings = {
     dots: false,
     arrow: false,
@@ -38,8 +36,7 @@ const List = ({ dataCollection, dataNftAll, goToCollectionDetail }) =>
   const { logo_url, collection_name, max_items } = dataCollection
   const { records } = dataNftAll
 
-  const onChangeSlide = (action) =>
-  {
+  const onChangeSlide = (action) => {
     if (action === 'NEXT') sliderRef.current.slickNext()
     else sliderRef.current.slickPrev()
   }
@@ -68,21 +65,19 @@ const List = ({ dataCollection, dataNftAll, goToCollectionDetail }) =>
             <Avatar size={32} src="https://picsum.photos/200/300" />
             <TextNormal color="text_grey">bterwiliger</TextNormal>
           </TextNormal> */}
-        </div >
+        </div>
         <div className="list__content__right">
           <Slider {...settings} ref={sliderRef}>
             {(records || [...new Array(8)]).map((item, index) => (
-              <Skeleton className="ske" active avatar title={false} loading={!records?.length}>
-                <CardDetail
-                  key={index}
-                  className="card-detail"
-                  url={item?.image_url}
-                  id={item?.id}
-                  order={item?.token_id}
-                  name={item?.token_name}
-                />
-              </Skeleton>
-
+              <CardDetail
+                key={index}
+                className="card-detail"
+                url={item?.image_url}
+                id={item?.id}
+                order={item?.token_id}
+                name={item?.token_name}
+                loading={!records?.length}
+              />
             ))}
           </Slider>
           <div className="btn__group">
@@ -90,8 +85,8 @@ const List = ({ dataCollection, dataNftAll, goToCollectionDetail }) =>
             <Image onClick={() => onChangeSlide('NEXT')} src={IMAGE_BTN_NEXT} />
           </div>
         </div>
-      </div >
-    </ListWrapper >
+      </div>
+    </ListWrapper>
   )
 }
 
