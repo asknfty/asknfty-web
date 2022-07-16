@@ -1,17 +1,16 @@
-import { Skeleton, Spin, Row, Col } from 'antd'
+import { Spin, Row, Col } from 'antd'
 import { getNftAllItemAPI } from 'Apis'
-import { BG_BUTTON_LOAD_MORE, BUTTON_IMAGE } from 'Assets'
-import { ButtonImage, CardDetail } from 'Components'
-import { useGetNftAllItem } from 'Hooks'
+import { ICON_LOAD_MORE } from 'Assets'
+import { CardDetail, Image, LoadMore } from 'Components'
+import { PAGESIZE_DEF } from 'Constants'
+import { useGetNftAllItem, useInfiniteScroll } from 'Hooks'
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { Wrapper } from './styled'
-
-const COUNT_ITEM_LOAD_MORE = 10
 const CollectionList = () => {
-  const [nftCollectionName, setNftCollectionName] = useState([])
   const [list, setList] = useState([])
   const [pageLoadMore, setPageLoadMore] = useState(0)
+  const [isLoadingMore, setIsLoadingMore] = useState(false)
 
   const { data, isLoading, getNftAllItemAction } = useGetNftAllItem()
 
@@ -19,53 +18,71 @@ const CollectionList = () => {
 
   const { collectionId } = useParams()
 
+  const allowLoadMore = !!data.records?.length && total - list.length > 0
+
   useEffect(() => {
-    getNftAllItemAction({ params: { page: 1, pageSize: 10, filters: collectionId } })
+    getNftAllItemAction({
+      params: {
+        page: 0,
+        pageSize: PAGESIZE_DEF,
+        filters: collectionId
+      }
+    })
   }, [])
 
   useEffect(() => {
-    setList(data?.records)
-    setNftCollectionName(data?.records)
+    setList(data.records || [])
   }, [data])
 
   const onLoadMore = async () => {
-    setList(
-      nftCollectionName.concat(
-        [...new Array(COUNT_ITEM_LOAD_MORE)].map(() => ({
-          loading: true
-        }))
-      )
+    setIsLoadingMore(true)
+    const listLoading = list.concat(
+      [...new Array(PAGESIZE_DEF)].map(() => ({
+        loading: true
+      }))
     )
-    const loadMoreData = await getNftAllItemAPI({ params: { page: pageLoadMore + 1, pageSize: pageSize, filters: collectionId } })
-    setPageLoadMore(pageLoadMore + 1)
-    const newData = nftCollectionName.concat(loadMoreData.data?.records)
-    setNftCollectionName(newData)
-    setList(newData)
+    setList(listLoading)
+
+    const loadMoreData = await getNftAllItemAPI({
+      params: { page: pageLoadMore + 1, pageSize: pageSize, filters: collectionId }
+    })
+
+    setIsLoadingMore(false)
+    setPageLoadMore((prev) => prev + 1)
+
+    listLoading.splice(listLoading.length - PAGESIZE_DEF, listLoading.length)
+
+    setList(listLoading.concat(loadMoreData.data.records))
+    setIsFetching(false)
+
     window.dispatchEvent(new Event('resize'))
   }
 
-  const loadMore =
-    (data?.records && total - COUNT_ITEM_LOAD_MORE > 0) ? (
-      <ButtonImage className="btn-image" imageButton={BUTTON_IMAGE} onClick={onLoadMore} text="Load More" color="quote_text" fontWeight="fw_700" />
-    ) : null;
+  const [setIsFetching] = useInfiniteScroll(onLoadMore, isLoadingMore, allowLoadMore)
 
   return (
     <Spin spinning={isLoading} size="large">
       <Wrapper>
         <Row gutter={[24, 40]}>
-          {
-            list && list.map((item, index) => (
-              <Col span={12} xl={6} md={8} key={index}>
-                <Skeleton className="ske" active avatar title={false} loading={item?.loading}>
-                  <CardDetail id={item.id} url={item.image_url} order={item.token_id} name={item.token_name ? item.token_name : `#${item.token_id}`} />
-                </Skeleton>
-              </Col>
-            ))
-          }
+          {(list || []).map((item, index) => (
+            <Col span={12} xl={6} md={8} key={index}>
+              <CardDetail
+                id={item.id}
+                url={item.image_url}
+                order={item.token_id}
+                name={item.token_name ? item.token_name : `#${item.token_id}`}
+                loading={item.loading}
+              />
+            </Col>
+          ))}
         </Row>
-        {loadMore}
+        {isLoadingMore ? (
+          <LoadMore margin="24px 0"  />
+        ) : (
+          allowLoadMore && <Image src={ICON_LOAD_MORE} alt="load-more" className="load__more" />
+        )}
       </Wrapper>
-    </Spin >
+    </Spin>
   )
 }
 

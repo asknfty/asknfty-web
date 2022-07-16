@@ -13,19 +13,36 @@ export const DetailWrapper = styled.div`
         display: flex;
         align-items: center;
         margin: 10px 0 18px 0;
-        p {
-          &:first-child {
-            margin-right: 19px;
-          }
+        span {
+          margin-right: 19px;
+          color: ${({ theme }) => theme.text_blue};
         }
       }
       &--content {
-        display: flex;
-        p {
-          margin-bottom: 12px;
-        }
         .item {
-          width: 50%;
+          display: flex;
+          p {
+            margin-bottom: 12px;
+            width: 50%;
+            word-break: break-word;
+          }
+        }
+      }
+    }
+    &__right {
+      width: 50%;
+      &--title {
+        display: flex;
+        align-items: center;
+        margin: 10px 0 18px 0;
+      }
+      &--content {
+        .item {
+          display: flex;
+          p {
+            margin-bottom: 12px;
+            width: 50%;
+          }
         }
       }
     }

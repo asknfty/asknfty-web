@@ -1,13 +1,20 @@
 import { BG_COLLECTION_DETAIL } from 'Assets'
 import styled from 'styled-components'
+import { MEDIA_WIDTHS } from 'Themes'
 
 export const Wrapper = styled.div`
   min-height: calc(100vh - 48px - 72px);
   background: url(${BG_COLLECTION_DETAIL});
   background-size: cover;
   width: 100%;
-  .collection-container {
+  .collection-container, .main-info-container {
     max-width: 1096px;
+  }
+  @media screen and (max-width: ${MEDIA_WIDTHS.upToLarge}px) {
+    .main-info-container {
+      padding-left: unset;
+      padding-right: unset;
+    }
   }
 `
 

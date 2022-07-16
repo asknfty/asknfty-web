@@ -18,6 +18,7 @@ import { ButtonImage } from './button'
 import SkeletonCardSearch from './skeleton'
 import CardSearch from './cardSearch'
 import CardDetail from './cardDetail'
+import LoadMore from "./loadMore"
 export * from './form'
 
 export {
@@ -57,5 +58,8 @@ export {
 
     //cardItem
     CardDetail,
-    CardSearch
+    CardSearch,
+
+    //loadMoreAni
+    LoadMore
 }

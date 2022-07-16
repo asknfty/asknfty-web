@@ -1,16 +1,9 @@
-import { Slider, Row, Col } from 'antd'
+import { Slider, Row, Col, Skeleton } from 'antd'
 import { ICON_NFT_PRICE } from 'Assets'
 import { Image, TextNormal } from 'Components'
 import React from 'react'
 import { BoxWrapper } from 'Themes'
-import { DataRange, DesWrapper, Wrapper } from './styled'
-
-const PRICE_ESTIMATES = [
-  { label: '4 Clothes traits', total: '107' },
-  { label: '7 Eyes traits', total: '806' },
-  { label: '3 Background traits', total: '492' },
-  { label: '+ 4 more', total: '875' }
-]
+import { DataRange, DesWrapper } from './styled'
 
 const marks = {
   0: {
@@ -49,7 +42,7 @@ const marks = {
   }
 }
 
-const Description = ({ description, token_price_estimation }) => {
+const Description = ({ description, token_price_estimation, isLoading }) => {
   return (
     <DesWrapper>
       <Row gutter={[token_price_estimation && 40, 0]}>
@@ -59,25 +52,31 @@ const Description = ({ description, token_price_estimation }) => {
               Description
             </TextNormal>
             <div className="description__item__content">
-              <TextNormal lineHeight="28px" color="title_grey">
-                {description}
-              </TextNormal>
+              <Skeleton loading={isLoading}>
+                <TextNormal lineHeight="28px" color="title_grey">
+                  {description}
+                </TextNormal>
+              </Skeleton>
             </div>
           </BoxWrapper>
         </Col>
-        {token_price_estimation && <Col span={24} xl={12} className="description__item">
-          <BoxWrapper>
-            <TextNormal fontWeight="fw_800" color="text_grey" className="description__item__title">
-              Price Estimate
-            </TextNormal>
-            <div className="description__item__content range">
-              <TextNormal className="estimate" fontWeight="fw_700" color="grey_text">
-                Estimated Price Range
+        {token_price_estimation && (
+          <Col span={24} xl={12} className="description__item">
+            <BoxWrapper>
+              <TextNormal fontWeight="fw_800" color="text_grey" className="description__item__title">
+                Price Estimate
               </TextNormal>
-              <Slider marks={marks} defaultValue={59} disabled />
-            </div>
-          </BoxWrapper>
-        </Col>}
+              <div className="description__item__content range">
+                <Skeleton loading={isLoading}>
+                  <TextNormal className="estimate" fontWeight="fw_700" color="grey_text">
+                    Estimated Price Range
+                  </TextNormal>
+                  <Slider marks={marks} defaultValue={59} disabled />
+                </Skeleton>
+              </div>
+            </BoxWrapper>
+          </Col>
+        )}
       </Row>
     </DesWrapper>
   )

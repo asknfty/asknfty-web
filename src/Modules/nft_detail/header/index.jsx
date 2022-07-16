@@ -1,17 +1,12 @@
 import { ICON_ARROW_LEFT, IMG_DEFAULT } from 'Assets'
 import { Image, TextNormal } from 'Components'
 import React from 'react'
-import { useHistory } from 'react-router-dom'
 import { HeaderWrapper } from './styled'
 
-const Header = ({ data }) => {
-  const history = useHistory()
-  const goBack = () => {
-    history.goBack()
-  }
+const Header = ({ data, goToCollectionDetail }) => {
   return (
     <HeaderWrapper>
-      <div onClick={goBack} className="header__back">
+      <div onClick={goToCollectionDetail} className="header__back">
         <Image src={ICON_ARROW_LEFT} />
         <TextNormal fontWeight="fw_800">Back to collection</TextNormal>
       </div>

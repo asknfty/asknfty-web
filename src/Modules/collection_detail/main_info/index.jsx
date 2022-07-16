@@ -1,17 +1,15 @@
 import { UserOutlined } from '@ant-design/icons'
-import { Avatar, Tabs, Row, Col } from 'antd'
+import { Avatar, Row, Col } from 'antd'
 import {
-  BG_BUTTON_TURN_ON_ALERT,
-  ICON_EYE,
   ICON_FLOOR_PRICE,
-  ICON_HEART,
   ICON_INCLUDE,
   ICON_ON_EXCHANGE,
   ICON_VOLUME_TRADED
 } from 'Assets'
-import { ButtonImage, TextNormal, Image } from 'Components'
+import { TextNormal, Image } from 'Components'
 import React from 'react'
 import { BoxWrapper } from 'Themes'
+import { ethFormat } from 'Utils'
 import { ImageWrapper, MainInfoWrapper } from './styled'
 
 const MainInfo = ({
@@ -25,8 +23,8 @@ const MainInfo = ({
   floor_price_wei_24_h,
   volume_wei_24_h
 }) => {
-  const swapCurrent = (current_number_of_items > totalItems) ? totalItems : current_number_of_items
-  const swapTotal = (current_number_of_items > totalItems) ? current_number_of_items : totalItems
+  const swapTotalItems = (+current_number_of_items > +totalItems) ? current_number_of_items : totalItems
+
   return (
     <BoxWrapper>
       <ImageWrapper>
@@ -61,7 +59,7 @@ const MainInfo = ({
                   Max Total Supply
                 </TextNormal>
                 <TextNormal color="text_primary" fontWeight="fw_700">
-                  {swapTotal} items
+                  {swapTotalItems || 0} items
                 </TextNormal>
               </div>
             </div>
@@ -74,7 +72,7 @@ const MainInfo = ({
                   Total Supply
                 </TextNormal>
                 <TextNormal color="text_primary" fontWeight="fw_700">
-                  {swapCurrent} items
+                  {current_number_of_items || 0} items
                 </TextNormal>
               </div>
             </div>
@@ -87,7 +85,7 @@ const MainInfo = ({
                   Floor Price
                 </TextNormal>
                 <TextNormal color="text_primary" fontWeight="fw_700">
-                  {floor_price_wei_24_h} {crypto_currency}
+                  {ethFormat(floor_price_wei_24_h) || 0} {crypto_currency}
                 </TextNormal>
               </div>
             </div>
@@ -100,7 +98,7 @@ const MainInfo = ({
                   Volume Traded
                 </TextNormal>
                 <TextNormal color="text_primary" fontWeight="fw_700">
-                  {volume_wei_24_h} {crypto_currency}
+                  {ethFormat(volume_wei_24_h)} {crypto_currency}
                 </TextNormal>
               </div>
             </div>
