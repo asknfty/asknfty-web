@@ -1,7 +1,7 @@
-import { Skeleton, Spin, Row, Col } from 'antd'
+import { Spin, Row, Col } from 'antd'
 import { getNftAllItemAPI } from 'Apis'
 import { ICON_LOAD_MORE } from 'Assets'
-import { CardDetail, Image } from 'Components'
+import { CardDetail, Image, LoadMore } from 'Components'
 import { PAGESIZE_DEF } from 'Constants'
 import { useGetNftAllItem, useInfiniteScroll } from 'Hooks'
 import React, { useEffect, useState } from 'react'
@@ -21,7 +21,13 @@ const CollectionList = () => {
   const allowLoadMore = !!data.records?.length && total - list.length > 0
 
   useEffect(() => {
-    getNftAllItemAction({ params: { page: 1, pageSize: PAGESIZE_DEF, filters: collectionId } })
+    getNftAllItemAction({
+      params: {
+        page: 0,
+        pageSize: PAGESIZE_DEF,
+        filters: collectionId
+      }
+    })
   }, [])
 
   useEffect(() => {
@@ -42,7 +48,7 @@ const CollectionList = () => {
     })
 
     setIsLoadingMore(false)
-    setPageLoadMore((prevPageLoadMore) => prevPageLoadMore + 1)
+    setPageLoadMore((prev) => prev + 1)
 
     listLoading.splice(listLoading.length - PAGESIZE_DEF, listLoading.length)
 
@@ -60,17 +66,21 @@ const CollectionList = () => {
         <Row gutter={[24, 40]}>
           {(list || []).map((item, index) => (
             <Col span={12} xl={6} md={8} key={index}>
-                <CardDetail
-                  id={item.id}
-                  url={item.image_url}
-                  order={item.token_id}
-                  name={item.token_name ? item.token_name : `#${item.token_id}`}
-                  loading={item.loading}
-                />
+              <CardDetail
+                id={item.id}
+                url={item.image_url}
+                order={item.token_id}
+                name={item.token_name ? item.token_name : `#${item.token_id}`}
+                loading={item.loading}
+              />
             </Col>
           ))}
         </Row>
-        {allowLoadMore && <Image src={ICON_LOAD_MORE} alt="load-more" className="load__more" />}
+        {isLoadingMore ? (
+          <LoadMore margin="24px 0"  />
+        ) : (
+          allowLoadMore && <Image src={ICON_LOAD_MORE} alt="load-more" className="load__more" />
+        )}
       </Wrapper>
     </Spin>
   )

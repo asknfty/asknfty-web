@@ -1,19 +1,10 @@
-import { BTN_SEARCH_RED, BTN_X, BUTTON_IMAGE } from 'Assets'
-import { CheckboxGroup, FormInput } from 'Components'
-import { NFT_OPTIONS } from 'Constants'
-import React, { useState, useCallback, memo } from 'react'
+import { BTN_SEARCH_RED, BTN_X } from 'Assets'
+import { FormInput } from 'Components'
+import React, { useCallback, memo } from 'react'
 import { FormProvider, useForm } from 'react-hook-form'
-import { SearchOutlined } from '@ant-design/icons'
-import { parseParamsCollectionToQueryString } from 'Utils'
 import { FilterBlockSchema } from './schema'
-import { CheckBoxWrapper } from './styled'
 import { yupResolver } from '@hookform/resolvers/yup'
-import { Filter, Sort } from './components'
 import { useGetNftAllCollection } from 'Hooks'
-
-const DEFAULT_VALUE = {
-  queries: '',
-}
 
 const FilterBlock = () => {
   const { getNftAllCollectionAction, deleteNftAllCollectionAction } = useGetNftAllCollection()
@@ -27,7 +18,7 @@ const FilterBlock = () => {
     queries
   } = watch()
 
-  const handleReset = useCallback((formData) => {
+  const handleReset = useCallback(() => {
     reset({
       queries: null
     })
@@ -35,10 +26,9 @@ const FilterBlock = () => {
   }, [])
 
   const onSubmit = useCallback((formData) => {
-    getNftAllCollectionAction({ params: { page: 0, pageSize: 12, queries: formData.queries } })
+    const { queries } = formData
+    getNftAllCollectionAction({ params: { page: 0, pageSize: 12, queries } })
   }, [])
-
-  console.log('rerender')
 
   return (
     <FormProvider {...form}>

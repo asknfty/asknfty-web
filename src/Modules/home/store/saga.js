@@ -30,6 +30,7 @@ export function* getNftAllCollectionSaga({ payload }) {
 }
 
 export function* getNftAllItemSaga({ payload }) {
+  const { callback } = payload
   try {
     const { code, data, pagination } = yield getNftAllItemAPI(payload)
     if (code === 'MAR0000') {
@@ -40,6 +41,9 @@ export function* getNftAllItemSaga({ payload }) {
           pagination
         }
       })
+      if (callback) {
+        callback()
+      }
     }
   } catch (error) {
     yield put({

@@ -18,7 +18,7 @@ const CardSearch = ({ url, name, title, id, loading }) => {
       <Skeleton className="ske" active avatar title={false} loading={loading}>
         <div className="wrap-content">
           <div className="card" onClick={goToDetail}>
-            {url ? (
+            {(url && !url.includes('ipfs')) ? (
               <div className="card-img" style={{ backgroundImage: `url(${url})` }}></div>
             ) : (
               <Image src={IMG_DEFAULT} className="card-img-default" alt="default" />

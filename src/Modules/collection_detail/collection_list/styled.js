@@ -13,4 +13,8 @@ export const Wrapper = styled.div`
   .load__more {
     margin-top: 24px;
   }
+
+  .loading {
+    margin: 24px auto;
+  }
 `

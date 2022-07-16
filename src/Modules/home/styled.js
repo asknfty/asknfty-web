@@ -13,7 +13,9 @@ export const Wrapper = styled.div`
   position: relative;
   z-index: 999;
 
-  .cloud-img, .coin-img, .hand {
+  .cloud-img,
+  .coin-img,
+  .hand {
     content: '';
     position: absolute;
     bottom: 0;
@@ -51,7 +53,7 @@ export const Wrapper = styled.div`
   @media screen and (max-width: ${MEDIA_WIDTHS.upToSmall}px) {
     min-height: calc(100vh - 74px - 162px); // calc height content with subtract header and footer
     background: url(${BG_WELCOME_MOBILE}) center center no-repeat,
-    linear-gradient(0deg, #e9a4a4 -14.33%, #90ddfd 100%);
+      linear-gradient(0deg, #e9a4a4 -14.33%, #90ddfd 100%);
     background-size: cover;
     .search-block {
       margin-top: 48px;

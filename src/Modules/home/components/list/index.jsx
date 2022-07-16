@@ -1,7 +1,7 @@
 import { Col, Row, Skeleton, Spin } from 'antd'
 import { getNftAllCollectionAPI } from 'Apis'
 import { ICON_LOAD_MORE, NOT_FOUND } from 'Assets'
-import { TextNormal, CardSearch, Image } from 'Components'
+import { TextNormal, CardSearch, Image, LoadMore } from 'Components'
 import { PAGESIZE_DEF } from 'Constants'
 import { useGetNftAllCollection, useInfiniteScroll } from 'Hooks'
 import React, { useState, useEffect } from 'react'
@@ -35,7 +35,7 @@ const ListNFT = () => {
     })
 
     setIsLoadingMore(false)
-    setPageLoadMore((prevPageLoadMore) => prevPageLoadMore + 1)
+    setPageLoadMore((prev) => prev + 1)
 
     listLoading.splice(listLoading.length - PAGESIZE_DEF, listLoading.length)
 
@@ -70,7 +70,12 @@ const ListNFT = () => {
             </div>
           )}
         </Row>
-        {allowLoadMore && <Image src={ICON_LOAD_MORE} alt="load-more" className="load__more" />}
+        {isLoadingMore 
+          ? (
+          <LoadMore className="loading" />
+        ) : (
+          allowLoadMore && <Image src={ICON_LOAD_MORE} alt="load-more" className="load__more" />
+        )}
       </Wrapper>
     </Spin>
   )
