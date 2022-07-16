@@ -5,7 +5,8 @@ import { trimPublicAddress } from 'Utils'
 import { DetailWrapper } from './styled'
 
 const Detail = ({ data, dataCollection }) => {
-  const { token_id, collection_address, token_name, token_count, chain } = data
+  const { token_id, collection_address, token_name, token_count, chain, token_trait } = data
+  
 
   const { collection_name, max_items } = dataCollection
 
@@ -47,7 +48,7 @@ const Detail = ({ data, dataCollection }) => {
             </div> */}
           </div>
         </Col>
-        {data.token_trait && data.token_trait.traits && (
+        {token_trait && token_trait.traits && token_trait.traits[0].trait_value && (
           <Col span={24} xl={12} className="detail__content__right">
             <TextNormal
               className="detail__content__right--title"
@@ -58,7 +59,7 @@ const Detail = ({ data, dataCollection }) => {
               Attributes
             </TextNormal>
             <div className="detail__content__right--content">
-              {data.token_trait.traits.map((item, index) => (
+              {token_trait.traits.map((item, index) => (
                 <div className="item" key={index}>
                   <TextNormal color="title_grey">{item.trait_type}</TextNormal>
                   <TextNormal color="text_blue">{item.trait_value.str_val}</TextNormal>
