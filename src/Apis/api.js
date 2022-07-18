@@ -9,6 +9,7 @@ import i18next from 'I18n'
 import { isEmpty, assign } from 'lodash'
 import { STORAGE, getLocalStorage, IGNORE_ERROR_MESSAGES } from 'Utils'
 import { store } from 'index'
+import { API_CODE_FAILURE, API_CODE_SUCCESS } from 'Constants'
 
 i18next.loadNamespaces(['error_message'])
 
@@ -53,6 +54,13 @@ class AxiosClient {
     this.axiosClient.interceptors.response.use(
       (response) => {
         const { status, data } = response
+        if (API_CODE_FAILURE.includes(data.code)) {
+          notification.error({
+            message: 'Error',
+            description: data.msg,
+            duration: 2
+          })
+        }
         return {
           status,
           data

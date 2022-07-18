@@ -1,17 +1,17 @@
 import { put, takeLatest } from 'redux-saga/effects'
-import { notification } from 'antd'
 
 import { REQUEST, SUCCESS, FAILURE } from 'Stores'
 
 import { GET_DETAILS_NFT_COLLECTION, GET_NFT_ALL_COLLECTION, GET_NFT_ALL_ITEM } from './constants'
 
 import { getNftAllCollectionAPI, getNftAllItemAPI, getNftCollectionDetailAPI } from 'Apis'
+import { API_CODE_SUCCESS } from 'Constants'
 
 export function* getNftAllCollectionSaga({ payload }) {
   try {
     const { code, data } = yield getNftAllCollectionAPI(payload)
     const { result: nftAllCollection, ...pagination } = data
-    if (code === 'MAR0000') {
+    if (API_CODE_SUCCESS.includes(code)) {
       yield put({
         type: SUCCESS(GET_NFT_ALL_COLLECTION),
         payload: {
@@ -33,7 +33,7 @@ export function* getNftAllItemSaga({ payload }) {
   const { callback } = payload
   try {
     const { code, data, pagination } = yield getNftAllItemAPI(payload)
-    if (code === 'MAR0000') {
+    if (API_CODE_SUCCESS.includes(code)) {
       yield put({
         type: SUCCESS(GET_NFT_ALL_ITEM),
         payload: {
@@ -57,7 +57,7 @@ export function* getNftAllItemSaga({ payload }) {
 export function* getDetailNftCollectionSaga({ payload }) {
   try {
     const { code, data } = yield getNftCollectionDetailAPI(payload)
-    if (code === 'MAR0000') {
+    if (API_CODE_SUCCESS.includes(code)) {
       yield put({
         type: SUCCESS(GET_DETAILS_NFT_COLLECTION),
         payload: {
