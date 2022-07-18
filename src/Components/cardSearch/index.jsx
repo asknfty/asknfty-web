@@ -13,12 +13,8 @@ const CardSearch = ({ url, name, title, id, loading }) => {
     history.push(ROUTE_NAMES.COLLECTION_DETAIL(id))
   }
 
-  if (url && url.includes('ipfs')) {
-    console.log('Boy ==>', url)
-  }
-
   const renderImage = () => {
-    if (url && url.includes('ipfs')) { // Show image card default if type image is IPFS
+    if (url && url.includes('ipfs') && !url.includes('https')) { // Show image card default if type image is IPFS
       return <div className="card-img" style={{ backgroundImage: `url(${IMAGE_CARD_DEFAULT})` }}></div>
     } else if (url) {
       return <div className="card-img" style={{ backgroundImage: `url(${url})` }}></div>

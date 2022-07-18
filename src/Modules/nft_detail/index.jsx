@@ -36,7 +36,7 @@ const NFTDetailScreen = () =>
 
   return (
     <HomeLayout>
-      <Header data={data} goToCollectionDetail={goToCollectionDetail} />
+      <Header data={data} goToCollectionDetail={goToCollectionDetail} collectionId={collectionId} />
       <Detail data={data} dataCollection={dataCollection} />
       <List dataCollection={dataCollection} dataNftAll={dataNftAll} goToCollectionDetail={goToCollectionDetail} />
     </HomeLayout>
