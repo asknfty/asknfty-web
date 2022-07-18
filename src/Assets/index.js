@@ -41,6 +41,7 @@ import CRYPTO_CENTER_MOBILE from './images/crypto-center-mobile.png'
 import HERO_NFTY_MOBILE from './images/hero-nfty-mobile.png'
 import SUB_LOGIN from './images/sub-login.png'
 import AVATAR_DEFAULT from './images/avatar-default.png'
+import IMAGE_CARD_DEFAULT from './images/img-card-default.png'
 
 
 // Image background screen
@@ -154,5 +155,6 @@ export
     BG_NFT_DETAIL,
     IMAGE_BTN_PREV,
     IMAGE_BTN_NEXT,
-    ICON_LOAD_MORE
+    ICON_LOAD_MORE,
+    IMAGE_CARD_DEFAULT
 }
