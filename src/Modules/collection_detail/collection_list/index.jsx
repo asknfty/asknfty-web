@@ -61,28 +61,29 @@ const CollectionList = () => {
   const [setIsFetching] = useInfiniteScroll(onLoadMore, isLoadingMore, allowLoadMore)
 
   return (
-    <Spin spinning={isLoading} size="large">
-      <Wrapper>
+    <Wrapper>
+      <Spin spinning={isLoading} size="large">
         <Row gutter={[24, 40]}>
-          {list.length > 0 && list.map((item, index) => (
-            <Col span={12} xl={6} md={8} key={index}>
-              <CardDetail
-                id={item?.id}
-                url={item?.image_url}
-                order={item?.token_id}
-                name={item?.token_name ? item?.token_name : `#${item?.token_id}`}
-                loading={item?.loading}
-              />
-            </Col>
-          ))}
+          {list.length > 0 &&
+            list.map((item, index) => (
+              <Col span={12} xl={6} md={8} key={index}>
+                <CardDetail
+                  id={item?.id}
+                  url={item?.image_url}
+                  order={item?.token_id}
+                  name={item?.token_name ? item?.token_name : `#${item?.token_id}`}
+                  loading={item?.loading}
+                />
+              </Col>
+            ))}
         </Row>
         {isLoadingMore ? (
-          <LoadMore margin="24px 0"  />
+          <LoadMore margin="24px 0" />
         ) : (
           allowLoadMore && <Image src={ICON_LOAD_MORE} alt="load-more" className="load__more" />
         )}
-      </Wrapper>
-    </Spin>
+      </Spin>
+    </Wrapper>
   )
 }
 
