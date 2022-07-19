@@ -1,6 +1,5 @@
-import { Tabs } from 'antd'
 import HomeLayout from 'Modules/layouts/home'
-import React, { useState } from 'react'
+import React from 'react'
 import CollectionList from './collection_list'
 import Description from './description'
 import MainInfo from './main_info'
