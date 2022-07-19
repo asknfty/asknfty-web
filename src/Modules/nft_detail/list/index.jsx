@@ -28,6 +28,7 @@ const List = ({ dataCollection, dataNftAll, goToCollectionDetail }) => {
 
   const { logo_url, collection_name, max_items } = dataCollection
   const { records } = dataNftAll
+  console.log('Boy 🚀 ~> records', records)
 
   const onChangeSlide = (action) => {
     if (action === 'NEXT') sliderRef.current.slickNext()
@@ -59,25 +60,39 @@ const List = ({ dataCollection, dataNftAll, goToCollectionDetail }) => {
           </TextNormal> */}
           </div>
         </div>
-        <div className="list__content__right">
-          <Slider {...settings} ref={sliderRef}>
-            {(records || [...new Array(8)]).map((item, index) => (
-              <CardDetail
-                key={index}
-                className="card-detail"
-                url={item?.image_url}
-                id={item?.id}
-                order={item?.token_id}
-                name={item?.token_name}
-                loading={!records?.length}
-              />
-            ))}
-          </Slider>
-          <div className="btn__group">
-            <Image onClick={() => onChangeSlide('PREV')} src={IMAGE_BTN_PREV} />
-            <Image onClick={() => onChangeSlide('NEXT')} src={IMAGE_BTN_NEXT} />
+        {records && (
+          <div className="list__content__right">
+            <Slider {...settings} ref={sliderRef}>
+              {records.length
+                ? records.map((item, index) => (
+                    <CardDetail
+                      key={index}
+                      className="card-detail"
+                      url={item?.image_url}
+                      id={item?.id}
+                      order={item?.token_id}
+                      name={item?.token_name}
+                      loading={!records?.length}
+                    />
+                  ))
+                : [...new Array(8)].map((item, index) => (
+                    <CardDetail
+                      key={index}
+                      className="card-detail"
+                      url={item?.image_url}
+                      id={item?.id}
+                      order={item?.token_id}
+                      name={item?.token_name}
+                      loading={!records?.length}
+                    />
+                  ))}
+            </Slider>
+            <div className="btn__group">
+              <Image onClick={() => onChangeSlide('PREV')} src={IMAGE_BTN_PREV} />
+              <Image onClick={() => onChangeSlide('NEXT')} src={IMAGE_BTN_NEXT} />
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </ListWrapper>
   )
