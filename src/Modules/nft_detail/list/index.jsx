@@ -12,13 +12,23 @@ const List = ({ dataCollection, dataNftAll, goToCollectionDetail }) => {
     infinite: true,
     speed: 300,
     slidesToShow: 4,
-    slidesToScroll: 3,
+    slidesToScroll: 4,
+    responsive: [
+      {
+        breakpoint: 960,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2
+        }
+      }
+    ]
   }
 
   const sliderRef = useRef()
 
   const { logo_url, collection_name, max_items } = dataCollection
   const { records } = dataNftAll
+  console.log('Boy 🚀 ~> records', records)
 
   const onChangeSlide = (action) => {
     if (action === 'NEXT') sliderRef.current.slickNext()
@@ -32,41 +42,57 @@ const List = ({ dataCollection, dataNftAll, goToCollectionDetail }) => {
       </TextNormal>
       <div className="list__content">
         <div className="list__content__left">
-          <div className="list__content__left--avatar"  onClick={goToCollectionDetail}>
+          <div className="list__content__left--avatar" onClick={goToCollectionDetail}>
             <Avatar size={160} src={logo_url || IMG_DEFAULT} />
           </div>
-          <TextNormal fontWeight="fw_700" fontSize="size_32" color="text_grey">
-            {collection_name || '-'}
-          </TextNormal>
-          <TextNormal color="title_grey" marginBottom={10} marginTop={10}>
-            {max_items} NFTs
-          </TextNormal>
-          {/* Hide for first demo */}
-          {/* <TextNormal color="title_grey" className="create__by">
+          <div className="list__content__left--info">
+            <TextNormal fontWeight="fw_700" fontSize="size_32" color="text_grey">
+              {collection_name || '-'}
+            </TextNormal>
+            <TextNormal color="title_grey" marginBottom={10} marginTop={10}>
+              {max_items} NFTs
+            </TextNormal>
+            {/* Hide for first demo */}
+            {/* <TextNormal color="title_grey" className="create__by">
             By
             <Avatar size={32} src="https://picsum.photos/200/300" />
             <TextNormal color="text_grey">bterwiliger</TextNormal>
           </TextNormal> */}
-        </div>
-        <div className="list__content__right">
-          <Slider {...settings} ref={sliderRef}>
-            {(records || [...new Array(8)]).map((item, index) => (
-              <CardDetail
-                key={index}
-                className="card-detail"
-                url={item?.image_url}
-                id={item?.id}
-                order={item?.token_id}
-                name={item?.token_name}
-                loading={!records?.length}
-              />
-            ))}
-          </Slider>
-          <div className="btn__group">
-            <Image onClick={() => onChangeSlide('PREV')} src={IMAGE_BTN_PREV} />
-            <Image onClick={() => onChangeSlide('NEXT')} src={IMAGE_BTN_NEXT} />
           </div>
         </div>
+        {records && (
+          <div className="list__content__right">
+            <Slider {...settings} ref={sliderRef}>
+              {records.length
+                ? records.map((item, index) => (
+                    <CardDetail
+                      key={index}
+                      className="card-detail"
+                      url={item?.image_url}
+                      id={item?.id}
+                      order={item?.token_id}
+                      name={item?.token_name}
+                      loading={!records?.length}
+                    />
+                  ))
+                : [...new Array(8)].map((item, index) => (
+                    <CardDetail
+                      key={index}
+                      className="card-detail"
+                      url={item?.image_url}
+                      id={item?.id}
+                      order={item?.token_id}
+                      name={item?.token_name}
+                      loading={!records?.length}
+                    />
+                  ))}
+            </Slider>
+            <div className="btn__group">
+              <Image onClick={() => onChangeSlide('PREV')} src={IMAGE_BTN_PREV} />
+              <Image onClick={() => onChangeSlide('NEXT')} src={IMAGE_BTN_NEXT} />
+            </div>
+          </div>
+        )}
       </div>
     </ListWrapper>
   )

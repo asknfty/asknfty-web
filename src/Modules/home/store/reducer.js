@@ -19,7 +19,9 @@ const nftAllCollection = {
 
 const nftAllItem = {
   isLoading: false,
-  data: [],
+  data: {
+    records: []
+  },
   pagination: {},
   error: null
 }

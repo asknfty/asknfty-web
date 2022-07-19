@@ -4,19 +4,21 @@ import { Wrapper, Left, Right, Link } from './styled'
 import { LOGO_COMPANY } from 'Assets'
 import { CloseOutlined } from '@ant-design/icons'
 import Login from './components/login'
+import { useGetNftAllCollection } from 'Hooks'
 
 const Header = () => {
     const [isOpen, setIsOpen] = useState(false)
+    const { deleteNftAllCollectionAction } = useGetNftAllCollection()
     return (
         <Wrapper>
             <Left>
-                <LinkIcon to="/" className="logo__company" src={LOGO_COMPANY} />
+                <LinkIcon to="/" className="logo__company" src={LOGO_COMPANY} onClick={deleteNftAllCollectionAction} />
             </Left>
             <Right className={isOpen && 'show'}>
                 {isOpen && (
                     <CloseOutlined className="close-outlined" onClick={(e) => setIsOpen(!isOpen)} color="#ffffff" />
                 )}
-                <Link className="link__page" to="/">
+                <Link className="link__page" to="/" onClick={deleteNftAllCollectionAction}>
                     askNFTY
                 </Link>
                 <Link className="link__page" to='/about-us'>
