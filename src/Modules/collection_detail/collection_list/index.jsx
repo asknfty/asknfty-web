@@ -64,14 +64,14 @@ const CollectionList = () => {
     <Spin spinning={isLoading} size="large">
       <Wrapper>
         <Row gutter={[24, 40]}>
-          {(list || []).map((item, index) => (
+          {list.length > 0 && list.map((item, index) => (
             <Col span={12} xl={6} md={8} key={index}>
               <CardDetail
-                id={item.id}
-                url={item.image_url}
-                order={item.token_id}
-                name={item.token_name ? item.token_name : `#${item.token_id}`}
-                loading={item.loading}
+                id={item?.id}
+                url={item?.image_url}
+                order={item?.token_id}
+                name={item?.token_name ? item?.token_name : `#${item?.token_id}`}
+                loading={item?.loading}
               />
             </Col>
           ))}

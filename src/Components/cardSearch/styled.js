@@ -104,6 +104,9 @@ export const Wrapper = styled.div`
         @media screen and (max-width: ${MEDIA_WIDTHS.upToLarge}px) {
           height: 222px;
         }
+        @media screen and (min-width: 1200px) and (max-width: 1280px) {
+          height: 208px !important;
+        }
       }
     }
   }

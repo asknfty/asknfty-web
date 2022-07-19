@@ -1,7 +1,7 @@
 import React from 'react'
 import { Wrapper } from './styled'
 import { TextNormal, Image } from 'Components'
-import { IMG_DEFAULT } from 'Assets'
+import { IMAGE_CARD_DEFAULT, IMG_DEFAULT } from 'Assets'
 import PropTypes from 'prop-types'
 import { useHistory } from 'react-router-dom'
 import { ROUTE_NAMES } from 'Routes/constant'
@@ -13,16 +13,20 @@ const CardDetail = ({ url, favorites, order, name, price, id, loading, ...rest }
   const goToDetail = () => {
     history.push(ROUTE_NAMES.NFT_DETAIL(id))
   }
+
+  const renderImage = () => {
+    if (url && url.includes('ipfs') && !url.includes('https')) { // Show image card default if type image is IPFS
+      return <div className="card-img" style={{ backgroundImage: `url(${IMAGE_CARD_DEFAULT})` }}></div>
+    } else if (url) {
+      return <div className="card-img" style={{ backgroundImage: `url(${url})` }}></div>
+    } else return <Image src={IMG_DEFAULT} className="card-img-default" alt="default" />
+  }
   return (
     <Wrapper {...rest}>
       <Skeleton className="ske" active avatar title={false} loading={loading}>
         <div className="wrap-content">
           <div className="card" onClick={goToDetail}>
-            {url ? (
-              <div className="card-img" style={{ backgroundImage: `url(${url})` }}></div>
-            ) : (
-              <Image src={IMG_DEFAULT} className="card-img-default" alt="default" />
-            )}
+            {renderImage()}
             <TextNormal fontSize="size_16" lineHeight="24px" color="title_grey" className="card-name">
               #{order || 0}
             </TextNormal>

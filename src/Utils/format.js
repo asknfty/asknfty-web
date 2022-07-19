@@ -11,5 +11,6 @@ export const abridgeNumber = (number = 0) => {
 
 export const ethFormat = (number) => {
   if (number === '0' || isNaN(number)) return 0
-  return Math.round(Number(number) / Math.pow(10, 18))
+  // return Math.round(Number(number) / Math.pow(10, 18))
+  return Math.round((number / Math.pow(10,18) * 1000)) / 1000
 }

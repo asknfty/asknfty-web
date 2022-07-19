@@ -13,6 +13,7 @@ export const HeaderWrapper = styled.div`
     align-items: center;
     margin: 24px 0 28px 160px;
     cursor: pointer;
+    width: max-content;
     .ant-image {
       margin-right: 16px;
     }

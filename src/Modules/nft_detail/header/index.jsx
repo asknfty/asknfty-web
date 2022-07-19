@@ -3,10 +3,10 @@ import { Image, TextNormal } from 'Components'
 import React from 'react'
 import { HeaderWrapper } from './styled'
 
-const Header = ({ data, goToCollectionDetail }) => {
+const Header = ({ data, goToCollectionDetail, collectionId }) => {
   return (
     <HeaderWrapper>
-      <div onClick={goToCollectionDetail} className="header__back">
+      <div onClick={collectionId && goToCollectionDetail} className="header__back">
         <Image src={ICON_ARROW_LEFT} />
         <TextNormal fontWeight="fw_800">Back to collection</TextNormal>
       </div>
