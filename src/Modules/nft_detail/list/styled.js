@@ -42,11 +42,11 @@ export const ListWrapper = styled.div`
         padding: 5px 10px;
         .slick-slide {
           height: auto;
-          @media screen and (max-width: ${MEDIA_WIDTHS.upToMedium}px) {
-            display: flex;
-            justify-content: center;
-          }
           > * {
+            @media screen and (max-width: ${MEDIA_WIDTHS.upToMedium}px) {
+              display: flex;
+              justify-content: center;
+            }
             margin-left: 24px;
             @media screen and (max-width: ${MEDIA_WIDTHS.upToMedium}px) {
               margin-left: 20px;

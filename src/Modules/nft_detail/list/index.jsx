@@ -28,7 +28,6 @@ const List = ({ dataCollection, dataNftAll, goToCollectionDetail }) => {
 
   const { logo_url, collection_name, max_items } = dataCollection
   const { records } = dataNftAll
-  console.log('Boy 🚀 ~> records', records)
 
   const onChangeSlide = (action) => {
     if (action === 'NEXT') sliderRef.current.slickNext()
