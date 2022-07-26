@@ -97,3 +97,5 @@ export const INCLUDE_FIELDS = [
   'collection_name',
   'description'
 ]
+
+export const PAGE_SIZE_MAX = 50

@@ -4,7 +4,7 @@ import React, { useCallback, memo } from 'react'
 import { FormProvider, useForm } from 'react-hook-form'
 import { FilterBlockSchema } from './schema'
 import { yupResolver } from '@hookform/resolvers/yup'
-import { useGetNftAllCollection } from 'Hooks'
+import { useGetNftAllCollection, useInfiniteScroll } from 'Hooks'
 import { INCLUDE_FIELDS } from 'Constants'
 
 const FilterBlock = () => {
@@ -15,9 +15,7 @@ const FilterBlock = () => {
 
   const { handleSubmit, reset, watch } = form
 
-  const {
-    queries
-  } = watch()
+  const { queries } = watch()
 
   const handleReset = useCallback(() => {
     reset({

@@ -3,5 +3,5 @@ export const ROUTE_NAMES = {
   LOADING: '/loading',
   ABOUT_US: '/about-us',
   COLLECTION_DETAIL: (collectionId) => `/collection-detail/${collectionId}`,
-  NFT_DETAIL: (nftDetail) => `/nft-detail/${nftDetail}`
+  NFT_DETAIL: (nftId) => `/nft-detail/${nftId}`
 }

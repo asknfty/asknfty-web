@@ -4,7 +4,7 @@ import { IMAGE_TYPES } from 'Constants'
 import React from 'react'
 import { HeaderWrapper } from './styled'
 
-const Header = ({ data, goToCollectionDetail, collectionId }) => {
+const Header = ({ data, goToCollectionDetail }) => {
 
   
   const renderImage = (data) => {
@@ -15,7 +15,7 @@ const Header = ({ data, goToCollectionDetail, collectionId }) => {
 
   return (
     <HeaderWrapper>
-      <div onClick={collectionId && goToCollectionDetail} className="header__back">
+      <div onClick={() => goToCollectionDetail()} className="header__back">
         <Image src={ICON_ARROW_LEFT} />
         <TextNormal fontWeight="fw_800">Back to collection</TextNormal>
       </div>

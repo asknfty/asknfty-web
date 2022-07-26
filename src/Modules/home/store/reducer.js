@@ -1,7 +1,7 @@
 import { LOCATION_CHANGE } from 'connected-react-router'
 import { createReducer, updateObject, REQUEST, SUCCESS, FAILURE } from 'Stores'
 import {
-  DELETE__NFT_ALL_COLLECTION,
+  DELETE_NFT_ALL_COLLECTION,
   GET_DETAILS_NFT_COLLECTION,
   GET_DETAILS_NFT_ITEM,
   GET_NFT_ALL_COLLECTION,
@@ -77,10 +77,13 @@ function loadNftAllCollectionSuccess(state, { payload }) {
   })
 }
 
-function loadNftAllCollectionFailure(state) {
+function loadNftAllCollectionFailure(state, { error }) {
   return updateObject(state, {
-    error: null,
-    isLoading: false
+    nftAllCollection: {
+      ...state.nftAllCollection,
+      isLoading: false,
+      error
+    }
   })
 }
 
@@ -105,10 +108,13 @@ function loadNftAllItemSuccess(state, { payload }) {
   })
 }
 
-function loadNftAllItemFailure(state) {
+function loadNftAllItemFailure(state, { error }) {
   return updateObject(state, {
-    error: null,
-    isLoading: false
+    nftAllItem: {
+      ...state.nftAllItem,
+      isLoading: false,
+      error
+    }
   })
 }
 
@@ -175,7 +181,8 @@ function deleteNftAllCollection(state) {
     nftAllCollection: {
       ...state.nftAllCollection,
       isLoading: false,
-      data: []
+      data: [],
+      queries: ''
     }
   })
 }
@@ -205,7 +212,7 @@ export default createReducer(initialState, {
   [SUCCESS(GET_DETAILS_NFT_ITEM)]: loadDetailsNftItemSuccess,
   [FAILURE(GET_DETAILS_NFT_ITEM)]: loadDetailsNftItemFailure,
 
-  [REQUEST(DELETE__NFT_ALL_COLLECTION)]: deleteNftAllCollection,
+  [REQUEST(DELETE_NFT_ALL_COLLECTION)]: deleteNftAllCollection,
 
   [LOCATION_CHANGE]: resetState // reset state when change route
 })

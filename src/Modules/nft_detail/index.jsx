@@ -31,7 +31,9 @@ const NFTDetailScreen = () =>
   }, [collectionId])
 
   const goToCollectionDetail = () => {
-    history.push(ROUTE_NAMES.COLLECTION_DETAIL(collectionId))
+    if (collectionId) {
+      history.push(ROUTE_NAMES.COLLECTION_DETAIL(collectionId))
+    }
   }
 
   return (
