@@ -1,8 +1,8 @@
-import { Col, Row, Skeleton, Spin } from 'antd'
+import { Col, Row, Spin } from 'antd'
 import { getNftAllCollectionAPI } from 'Apis'
 import { ICON_LOAD_MORE, NOT_FOUND } from 'Assets'
 import { TextNormal, CardSearch, Image, LoadMore } from 'Components'
-import { PAGESIZE_DEF } from 'Constants'
+import { INCLUDE_FIELDS, PAGESIZE_DEF } from 'Constants'
 import { useGetNftAllCollection, useInfiniteScroll } from 'Hooks'
 import React, { useState, useEffect } from 'react'
 import { Wrapper } from './styled'
@@ -31,7 +31,7 @@ const ListNFT = () => {
     )
     setList(listLoading)
     const loadMoreData = await getNftAllCollectionAPI({
-      params: { page: pageLoadMore + 1, pageSize: pageSize, queries: queries }
+      params: { page: pageLoadMore + 1, pageSize: pageSize, queries, includeFields: INCLUDE_FIELDS}
     })
 
     setIsLoadingMore(false)
