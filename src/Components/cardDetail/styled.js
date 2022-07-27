@@ -61,6 +61,7 @@ export const Wrapper = styled.div`
       .card-img {
         background-repeat: no-repeat;
         background-size: cover;
+        background-position: center center;
         height: max-content;
         overflow: hidden;
         margin-bottom: 4px;

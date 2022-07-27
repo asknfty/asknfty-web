@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 
 export const Wrapper = styled.div`
+  // padding-bottom: 50px;
   .load__more {
     margin-top: 40px;
   }
