@@ -90,12 +90,4 @@ export const GET_LABEL_BY_VALUE = {
   'relevance': 'Relevance'
 }
 
-export const INCLUDE_FIELDS = [
-  'id',
-  'logo_url',
-  'banner_url',
-  'collection_name',
-  'description'
-]
-
 export const PAGE_SIZE_MAX = 50

@@ -2,7 +2,7 @@ import { Col, Row, Spin } from "antd"
 import { getNftAllCollectionAPI } from "Apis"
 import { ICON_LOAD_MORE, NOT_FOUND } from "Assets"
 import { TextNormal, CardSearch, Image, LoadMore } from "Components"
-import { INCLUDE_FIELDS, PAGESIZE_DEF, PAGE_SIZE_MAX } from "Constants"
+import { PAGESIZE_DEF, PAGE_SIZE_MAX } from "Constants"
 import { useGetNftAllCollection, useInfiniteScroll } from "Hooks"
 import React, { useState, useEffect } from "react"
 import { Wrapper } from "./styled"
@@ -41,8 +41,7 @@ const ListNFT = () => {
         params: {
           page: pageLoadMore + 1,
           pageSize: pageSize,
-          queries,
-          includeFields: INCLUDE_FIELDS,
+          queries
         },
       })
       listLoading.splice(listLoading.length - PAGESIZE_DEF, listLoading.length) 
