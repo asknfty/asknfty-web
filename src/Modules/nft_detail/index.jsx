@@ -8,8 +8,7 @@ import Detail from './detail'
 import Header from './header'
 import List from './list'
 
-const NFTDetailScreen = () =>
-{
+const NFTDetailScreen = () => {
   const history = useHistory()
   const { nftId } = useParams()
 
@@ -21,12 +20,17 @@ const NFTDetailScreen = () =>
     getNftDetailAction({ nftId })
   }, [nftId])
 
-  const collectionId = useMemo(() => data.collection ? data.collection.id : '', [data])
+  const collectionId = useMemo(() => (data.collection ? data.collection.id : ''), [data])
 
   useEffect(() => {
     if (collectionId) {
       getNftAllItemAction({ params: { page: 1, pageSize: 20, filters: collectionId } })
-      getDetailNftCollectionAction({ collectionId: collectionId })
+      getDetailNftCollectionAction({
+        collectionId: collectionId,
+        params: {
+          includeFields: ['logo_url', 'collection_name', 'max_items']
+        }
+      })
     }
   }, [collectionId])
 
@@ -40,7 +44,11 @@ const NFTDetailScreen = () =>
     <HomeLayout>
       <Header data={data} goToCollectionDetail={goToCollectionDetail} collectionId={collectionId} />
       <Detail data={data} dataCollection={dataCollection} />
-      <List dataCollection={dataCollection} dataNftAll={dataNftAll} goToCollectionDetail={goToCollectionDetail} />
+      <List
+        dataCollection={dataCollection}
+        dataNftAll={dataNftAll}
+        goToCollectionDetail={goToCollectionDetail}
+      />
     </HomeLayout>
   )
 }

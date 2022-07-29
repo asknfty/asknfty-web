@@ -4,8 +4,7 @@ import React, { useCallback, memo } from 'react'
 import { FormProvider, useForm } from 'react-hook-form'
 import { FilterBlockSchema } from './schema'
 import { yupResolver } from '@hookform/resolvers/yup'
-import { useGetNftAllCollection, useInfiniteScroll } from 'Hooks'
-import { INCLUDE_FIELDS } from 'Constants'
+import { useGetNftAllCollection } from 'Hooks'
 
 const FilterBlock = () => {
   const { getNftAllCollectionAction, deleteNftAllCollectionAction } = useGetNftAllCollection()
@@ -26,7 +25,7 @@ const FilterBlock = () => {
 
   const onSubmit = useCallback((formData) => {
     const { queries } = formData
-    getNftAllCollectionAction({ params: { page: 0, pageSize: 12, queries, includeFields: INCLUDE_FIELDS } })
+    getNftAllCollectionAction({ params: { page: 0, pageSize: 12, queries } })
   }, [])
 
   return (

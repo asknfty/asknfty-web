@@ -24,8 +24,8 @@ const CollectionList = () => {
       params: {
         page: 0,
         pageSize: PAGESIZE_DEF,
-        filters: collectionId,
-      },
+        filters: collectionId
+      }
     })
   }, [])
 
@@ -81,7 +81,7 @@ const CollectionList = () => {
               <Col span={12} xl={6} md={8} key={index}>
                 <CardDetail
                   id={item?.id}
-                  url={item?.image_url}
+                  url={item?.image_url || item?.url}
                   order={item?.token_id}
                   name={
                     item?.token_name ? item?.token_name : `#${item?.token_id}`
