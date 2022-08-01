@@ -6,11 +6,11 @@ import { CloseOutlined } from '@ant-design/icons'
 import Login from './components/login'
 import { useGetNftAllCollection } from 'Hooks'
 
-const Header = () => {
+const Header = ({ ...rest }) => {
     const [isOpen, setIsOpen] = useState(false)
     const { deleteNftAllCollectionAction } = useGetNftAllCollection()
     return (
-        <Wrapper>
+        <Wrapper {...rest}>
             <Left>
                 <LinkIcon to="/" className="logo__company" src={LOGO_COMPANY} onClick={deleteNftAllCollectionAction} />
             </Left>
@@ -20,6 +20,9 @@ const Header = () => {
                 )}
                 <Link className="link__page" to="/" onClick={deleteNftAllCollectionAction}>
                     askNFTY
+                </Link>
+                <Link className="link__page" to='/search'>
+                    Search
                 </Link>
                 <Link className="link__page" to='/about-us'>
                     About us

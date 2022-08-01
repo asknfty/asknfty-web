@@ -62,6 +62,31 @@ import NOT_FOUND from './images/not-found.png'
 import BG_COLLECTION_DETAIL from './images/background-collection-detail.png'
 import BG_BUTTON_TURN_ON_ALERT from './images/bg-btn-turn-on-alert.png'
 import BG_BUTTON_LOAD_MORE from './images/bg-btn-load-more.png'
+import BG_DIRECTION from './images/background-direction.png'
+import HERO_DIRECTION from './images/hero-direction.png'
+import HAND_ASK from './images/hand-ask.png'
+import DIRECTION_LINE from './images/line-direction.png'
+import DIRECTION_WALLET from './images/direction-wallet.png'
+import DIRECTION_CURIOUS from './images/direction-curious.png'
+import DIRECTION_NATIVE from './images/direction-native.png'
+import CONTENT_SEARCH from './images/content-search.png'
+import CONTENT_TRACKER from './images/content-tracker.png'
+import MISSION_CONTENT from './images/mission-content.png'
+import GOMU from './images/gomu.png'
+import NFTSCAN from './images/nftscan.png'
+import DATA_DIRECTION from './images/data-direction.png'
+import RARITY from './images/rarity.png'
+import OPENSEA_RED from './images/opensea-red.png'
+import COVALENT_RED from './images/covalent-red.png'
+import X2Y2_RED from './images/x2y2-red.png'
+import LOOKSRARE_RED from './images/looksrare-red.png'
+import SIMPLE_RED from './images/simplehash-red.png'
+import SPICY_RED from './images/spicy-red.png'
+import BACKGROUND_DIRECTION_MOBILE from './images/background-direction-mobile.png'
+import MISSION_CONTENT_MOBILE from './images/data-direction-mobile.png'
+import LINE_DIRECTION_MOBILE from './images/line-direction-mobile.png'
+import SIGN_DIRECTION from './images/sign-direction.png'
+import SIGN_DIRECTION_MOBILE from './images/sign-direction-mobile.png'
 
 // ICON
 import ICON_EYE from './images/icon-eye.png'
@@ -82,8 +107,7 @@ import ICON_LOAD_MORE from './images/icon-load-more.png'
 import IMAGE_BTN_PREV from './images/img-btn-prev.png'
 import IMAGE_BTN_NEXT from './images/img-btn-next.png'
 
-export
-{
+export {
     IMG_DEFAULT,
     LOGO_COMPANY,
     SEARCH_ICON,
@@ -156,5 +180,30 @@ export
     IMAGE_BTN_PREV,
     IMAGE_BTN_NEXT,
     ICON_LOAD_MORE,
-    IMAGE_CARD_DEFAULT
+    IMAGE_CARD_DEFAULT,
+    BG_DIRECTION,
+    HERO_DIRECTION,
+    HAND_ASK,
+    DIRECTION_LINE,
+    DIRECTION_WALLET,
+    DIRECTION_CURIOUS,
+    DIRECTION_NATIVE,
+    CONTENT_SEARCH,
+    CONTENT_TRACKER,
+    MISSION_CONTENT,
+    GOMU,
+    NFTSCAN,
+    DATA_DIRECTION,
+    RARITY,
+    OPENSEA_RED,
+    COVALENT_RED,
+    X2Y2_RED,
+    LOOKSRARE_RED,
+    SIMPLE_RED,
+    SPICY_RED,
+    BACKGROUND_DIRECTION_MOBILE,
+    MISSION_CONTENT_MOBILE,
+    LINE_DIRECTION_MOBILE,
+    SIGN_DIRECTION,
+    SIGN_DIRECTION_MOBILE
 }

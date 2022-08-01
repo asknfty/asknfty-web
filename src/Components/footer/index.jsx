@@ -57,9 +57,9 @@ const FooterBox = styled.div`
 const Link = styled.div`
 `
 
-const Footer = () => {
+const Footer = ({ ...rest }) => {
     return (
-        <FooterBox>
+        <FooterBox {...rest}>
             <Container>
                 <Row align='middle' justify='space-between' className="footer">
                     <Col span={24} md={8} xl={8} className="info">
@@ -71,12 +71,12 @@ const Footer = () => {
                         <LinkIcon className="logo__company" src={LOGO_FOOTER} to="/" />
                     </Col>
                     <Col span={24} md={8} xl={8} className="link">
-                        <Link to='/' className="link__page">
+                        <a target="_blank" href="https://docs.google.com/document/d/1ofzaQyN7w3VOrJ40d4aKxq6REvGUesZCbd5iBWcudWk/edit?usp=sharing" className="link__page">
                             <TextPrimary fontSize="size_16">Privacy Policy</TextPrimary>
-                        </Link>
-                        <Link to="/" className="link__page">
+                        </a>
+                        <a target="_blank" href="https://docs.google.com/document/d/1WH8B8jf7bOMTRTVLRIirZVgrnmlNZha_vDLYO3ZYxqY/edit?usp=sharing" className="link__page">
                             <TextPrimary fontSize="size_16">Terms of Service</TextPrimary>
-                        </Link>
+                        </a>
                     </Col>
                 </Row>
             </Container>
