@@ -1,5 +1,6 @@
 export const ROUTE_NAMES = {
-  HOME: '/',
+  DIRECTION: '/',
+  HOME: '/search',
   LOADING: '/loading',
   ABOUT_US: '/about-us',
   COLLECTION_DETAIL: (collectionId) => `/collection-detail/${collectionId}`,
