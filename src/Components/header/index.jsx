@@ -24,9 +24,9 @@ const Header = ({ ...rest }) => {
                 <Link className="link__page" to='/search'>
                     Search
                 </Link>
-                <Link className="link__page" to='/about-us'>
+                {/* <Link className="link__page" to='/about-us'>
                     About us
-                </Link>
+                </Link> */}
                 <a className="link__page partner-link" target="_blank" href='https://forms.gle/hEnruK6yARuYrMZ26'>
                     Partner with Us
                 </a>
