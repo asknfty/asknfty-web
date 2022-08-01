@@ -64,7 +64,7 @@ const Footer = ({ ...rest }) => {
                 <Row align='middle' justify='space-between' className="footer">
                     <Col span={24} md={8} xl={8} className="info">
                         <TextPrimary fontSize="size_16">
-                            All rights servered
+                            All Rights Reserved
                         </TextPrimary>
                     </Col>
                     <Col span={24} md={8} xl={8} className="logo">
