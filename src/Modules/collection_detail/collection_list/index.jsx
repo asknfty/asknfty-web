@@ -95,7 +95,7 @@ const CollectionList = () => {
           <LoadMore margin="24px 0" />
         ) : (
           allowLoadMore &&
-          data.records.length > 0 &&
+          data.records?.length > 0 &&
           pageLoadMore < PAGE_SIZE_MAX && (
             <Image
               src={ICON_LOAD_MORE}
