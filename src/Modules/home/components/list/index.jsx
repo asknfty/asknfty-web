@@ -15,7 +15,7 @@ const ListNFT = () => {
 
   const { data, pagination, queries, isLoading } = useGetNftAllCollection()
 
-  const { pageSize } = pagination
+  const { page_size } = pagination
 
   useEffect(() => {
     setList(data.records || [])
@@ -40,7 +40,7 @@ const ListNFT = () => {
       const loadMoreData = await getNftAllCollectionAPI({
         params: {
           page: pageLoadMore + 1,
-          pageSize: pageSize,
+          pageSize: page_size,
           queries
         },
       })

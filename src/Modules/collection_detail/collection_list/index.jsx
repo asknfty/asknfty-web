@@ -15,7 +15,7 @@ const CollectionList = () => {
 
   const { data, isLoading, getNftAllItemAction } = useGetNftAllItem()
 
-  const { pageSize } = data
+  const { page_size } = data
 
   const { collectionId } = useParams()
 
@@ -46,7 +46,7 @@ const CollectionList = () => {
       const loadMoreData = await getNftAllItemAPI({
         params: {
           page: pageLoadMore + 1,
-          pageSize: pageSize,
+          pageSize: page_size,
           filters: collectionId,
         },
       })
